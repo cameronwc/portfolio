@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { SectionsContext } from "./sections-context";
-import type { SectionId } from "../App";
+import type { SectionId } from "../sections/section-metadata";
 
 export function FloatingNav() {
   const { sections } = useContext(SectionsContext);
