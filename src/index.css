@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  @apply bg-slate-950 font-sans text-white antialiased;
+}
+
+a {
+  @apply text-brand-300 transition hover:text-brand-200;
+}
+
+.section-padding {
+  @apply px-4 sm:px-8 md:px-12 lg:px-24;
+}
+
+.card-surface {
+  @apply rounded-3xl border border-white/5 bg-white/5 backdrop-blur;
+}
