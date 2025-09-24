@@ -3,25 +3,25 @@ import { SectionHeading } from "../components/SectionHeading";
 
 const projects = [
   {
-    name: "Atlas Copilot",
+    name: "Home Server Platform",
     description:
-      "A GPT-4 powered research assistant that synthesizes qualitative feedback, usage analytics, and support transcripts into action-ready briefs.",
-    role: "Product strategy, UX architecture, full-stack engineering",
-    impact: "Cut research synthesis time from 5 days to 6 hours and increased NPS by 14 points.",
+      "80TB Unraid virtualization and NAS environment supporting 80+ users with Bitwarden, Nextcloud, Home Assistant, and custom registries.",
+    role: "Architect & operator",
+    impact: "Maintains 30+ Docker services with 99.99% uptime, automated off-site backups, and Cloudflare-protected ingress.",
   },
   {
-    name: "Lighthouse Activation",
+    name: "FOSS Photography",
     description:
-      "Multi-step onboarding and pricing experiments that personalized the first 30 days for enterprise accounts.",
-    role: "Experiment design, analytics instrumentation, enablement",
-    impact: "Improved enterprise activation by 24% and influenced a $6.5M ARR upsell motion.",
+      "Open source image aggregator created to streamline sourcing of high-quality, royalty-free assets for design projects.",
+    role: "Creator & maintainer",
+    impact: "Built with React, GitHub Actions, and Heroku to deliver curated imagery with automated security scanning via Snyk.",
   },
   {
-    name: "Signal Fabric",
+    name: "Deauthentication Detector",
     description:
-      "A data contract platform with automated validation and governance workflows across 40+ microservices.",
-    role: "Product leadership, technical architecture, stakeholder facilitation",
-    impact: "Decreased incident volume by 38% and unlocked near-real-time analytics for GTM teams.",
+      "Raspberry Pi-based device that identifies Wi-Fi deauthentication attacks and surfaces telemetry on likely sources.",
+    role: "Hardware security developer",
+    impact: "Combines Python, Node.js, MongoDB, and Aircrack-ng to alert on malicious network activity in real time.",
   },
 ];
 
@@ -29,7 +29,7 @@ export function Projects() {
   return (
     <div>
       <SectionHeading id="projects" eyebrow="PROJECTS">
-        Selected work anchoring outcomes, not just features.
+        Hands-on initiatives that keep platforms secure and resilient.
       </SectionHeading>
       <div className="section-padding mx-auto mt-12 grid max-w-6xl gap-6 md:grid-cols-2 lg:grid-cols-3">
         {projects.map((project, index) => (

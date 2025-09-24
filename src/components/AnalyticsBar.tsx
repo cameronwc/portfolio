@@ -1,18 +1,18 @@
 const stats = [
   {
-    label: "New revenue unlocked",
-    value: "$18.4M",
-    caption: "Through launch of AI-assisted onboarding and pricing experiments",
+    label: "Critical vulnerability MTTR",
+    value: "0 days",
+    caption: "Sustained across Wellthy's caregiver platform with automated escalation paths",
   },
   {
-    label: "Workflow acceleration",
-    value: "6.2x",
-    caption: "Average reduction in delivery time after enablement playbooks",
+    label: "Compliance programs led",
+    value: "3x SOC 2",
+    caption: "Delivered consecutive Type II audits alongside HIPAA, NIST, and GDPR readiness",
   },
   {
-    label: "Research participants",
-    value: "320+",
-    caption: "Synthesized across discovery sprints and longitudinal studies",
+    label: "Engineers enabled",
+    value: "4000+",
+    caption: "Supported with secure-by-default tooling, reviews, and coaching at CVS Health/Aetna",
   },
 ];
 

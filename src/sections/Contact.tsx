@@ -5,7 +5,7 @@ export function Contact() {
   return (
     <div>
       <SectionHeading id="contact" eyebrow="CONNECT">
-        Ready to align on your next milestone?
+        Need a partner to harden your cloud platform?
       </SectionHeading>
       <motion.div
         className="section-padding mx-auto mt-12 max-w-4xl text-center"
@@ -15,21 +15,21 @@ export function Contact() {
         transition={{ duration: 0.6, ease: "easeOut" }}
       >
         <p className="text-lg text-slate-300">
-          I collaborate with teams who value clarity, inclusive design, and accountable AI. If you are exploring a new product
-          chapter—or need a partner to accelerate the one already underway—let’s talk through the problem space together.
+          I work with teams that treat security as a core product feature—whether you are scaling a healthcare startup, preparing for
+          audit, or modernizing enterprise pipelines. Let’s map the risks, automation, and playbooks that keep your releases fast and safe.
         </p>
         <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
           <a
-            href="mailto:hello@averymitchell.com"
+            href="mailto:cameron@coop.ninja"
             className="rounded-full bg-white px-6 py-3 text-sm font-semibold text-slate-900 shadow-glow transition hover:-translate-y-0.5 hover:shadow-lg"
           >
-            hello@averymitchell.com
+            cameron@coop.ninja
           </a>
           <a
-            href="https://cal.com/averymitchell/discovery"
+            href="https://www.linkedin.com/in/cameronwc"
             className="rounded-full border border-white/20 px-6 py-3 text-sm font-semibold text-white/90 transition hover:border-white/40 hover:bg-white/10"
           >
-            Schedule a 30-minute intro
+            Connect on LinkedIn
           </a>
         </div>
       </motion.div>

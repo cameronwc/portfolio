@@ -3,30 +3,30 @@ import { SectionHeading } from "../components/SectionHeading";
 
 const sessions = [
   {
-    title: "Designing AI copilots you can trust",
-    event: "Product-Led Summit 2024",
+    title: "Security enablement program",
+    event: "Wellthy",
     description:
-      "Shared the evaluation toolkit and change management rituals used to launch Atlas Copilot, including prompt governance and red teaming tactics.",
+      "Built the company's first security training track, authored Terraform/Docker/GitHub Actions safe defaults, and launched a bug bounty program to keep engineers proactive.",
   },
   {
-    title: "Story-first roadmaps",
-    event: "Founder Collective Workshop",
+    title: "Compliance orchestration",
+    event: "Wellthy",
     description:
-      "Guided founders through crafting narrative artifacts that align investors, operators, and customers when making bold bets.",
+      "Led multi-year SOC 2 Type II audits while aligning HIPAA, NIST, and GDPR controls with automated evidence collection and executive reporting.",
   },
   {
-    title: "Operationalizing research insights",
-    event: "ResearchOps Community",
+    title: "DevSecOps community coaching",
+    event: "CVS Health / Aetna",
     description:
-      "Walked through the discovery-to-delivery pipeline we built to synthesize qualitative signal and pipe it into planning cadences.",
+      "Hosted brown bags and 1:1 sessions for 4,000+ engineers, sharing secure coding practices, pipeline patterns, and threat review rituals.",
   },
 ];
 
 export function Speaking() {
   return (
     <div>
-      <SectionHeading id="speaking" eyebrow="SPEAKING & WRITING">
-        Making the work transparent through talks, guides, and workshops.
+      <SectionHeading id="speaking" eyebrow="PROGRAMS & LEADERSHIP">
+        Scaling secure engineering culture through enablement and repeatable playbooks.
       </SectionHeading>
       <div className="section-padding mx-auto mt-12 max-w-6xl space-y-6">
         {sessions.map((session, index) => (

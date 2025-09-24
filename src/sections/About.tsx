@@ -3,19 +3,19 @@ import { SectionHeading } from "../components/SectionHeading";
 
 const principles = [
   {
-    title: "Start with signal",
+    title: "Automate the guardrails",
     description:
-      "I immerse in customer stories, data trails, and operational constraints to ensure each roadmap bet is grounded in real friction and opportunity sizing.",
+      "Security controls belong in the pipeline. I wire SAST, SCA, IaC, container, and CSPM coverage directly into delivery so engineers ship safely by default.",
   },
   {
-    title: "Prototype out loud",
+    title: "Measure trust continuously",
     description:
-      "I pair lightweight experiments with narrative artifacts so leaders, designers, and engineers can react to the same source of truth early and often.",
+      "From SIEM dashboards to SBOM registries, I centralize signal so compliance evidence, alerting, and trending risk data are always at hand.",
   },
   {
-    title: "Design for stewardship",
+    title: "Enable every engineer",
     description:
-      "From governance models to observability dashboards, I build the systems that keep AI-assisted experiences safe, inclusive, and measurable.",
+      "Training, playbooks, and reusable templates turn security from a gate into a partnership. I build programs that scale good decisions across teams.",
   },
 ];
 
@@ -23,7 +23,7 @@ export function About() {
   return (
     <div>
       <SectionHeading id="about" eyebrow="ABOUT">
-        An operator who blends facilitation, code, and storytelling to unblock velocity.
+        DevSecOps leadership that turns compliance into an engineering advantage.
       </SectionHeading>
       <motion.div
         className="section-padding mx-auto mt-10 max-w-4xl space-y-6 text-slate-300"
@@ -33,14 +33,14 @@ export function About() {
         transition={{ duration: 0.6, ease: "easeOut" }}
       >
         <p>
-          I partner with founders and product leaders to de-risk complex launches—facilitating alignment, writing the playbooks,
-          and coding the connective tissue when teams need extra hands. My experience spans venture-backed SaaS, enterprise
-          transformation, and public sector programs modernizing service delivery.
+          I help regulated SaaS teams weave security into day-to-day delivery—from procurement and integration of tooling to
+          the automation that keeps evidence flowing. My background spans scaling healthcare startups, enabling Fortune 50
+          engineering orgs, and hardening defense-grade microservices.
         </p>
         <p>
-          Alongside delivery, I coach teams on the rituals that keep momentum: framing outcomes, instrumenting feedback loops,
-          and translating qualitative insight into roadmap conviction. The result is a culture where everyone can see their
-          impact in the metrics and the customer stories we celebrate.
+          Whether I am formalizing SOC 2 controls, leading incident response, or coaching on secure patterns, the goal is the
+          same: pair pragmatic engineering with measurable trust. Teams can move fast because the guardrails, visibility, and
+          playbooks are already working in the background.
         </p>
       </motion.div>
       <motion.div

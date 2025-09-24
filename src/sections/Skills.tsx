@@ -3,33 +3,55 @@ import { SectionHeading } from "../components/SectionHeading";
 
 const skillGroups = [
   {
-    title: "Strategy & leadership",
+    title: "Security automation",
     skills: [
-      "Narrative roadmapping",
-      "Quarterly planning",
-      "Outcome-based OKRs",
-      "Executive facilitation",
+      "Snyk & Nexus IQ",
+      "Checkmarx CxSAST",
+      "Prisma Cloud (Twistlock)",
+      "OWASP Zap & Probely",
+      "Data Theorem",
+      "Dependency Track",
     ],
   },
   {
-    title: "Product & research",
-    skills: ["Discovery sprints", "Jobs-to-be-done", "Experiment design", "Mixed-methods analysis"],
+    title: "Cloud & infrastructure",
+    skills: [
+      "AWS (EC2, ECS, ECR, Lambda, RDS, Route 53)",
+      "Terraform",
+      "Docker & Docker Compose",
+      "GitHub Actions",
+      "CircleCI & Jenkins",
+    ],
   },
   {
-    title: "Design & experience",
-    skills: ["Systems thinking", "Information architecture", "Content design", "Accessibility"],
+    title: "Compliance & governance",
+    skills: [
+      "SOC 2 Type II",
+      "HIPAA",
+      "NIST",
+      "GDPR",
+      "PCI DSS",
+      "Bug bounty operations",
+    ],
   },
   {
-    title: "Engineering",
-    skills: ["React & TypeScript", "Node.js & serverless", "Postgres & Prisma", "AWS (S3, Lambda, EventBridge)"],
+    title: "Observability & artifact mgmt",
+    skills: [
+      "Sumo Logic",
+      "Nexus Repo",
+      "Artifactory",
+      "Elastic Container Registry",
+    ],
   },
   {
-    title: "AI & data",
-    skills: ["Prompt orchestration", "Evaluation frameworks", "LangChain", "dbt & modern data stack"],
-  },
-  {
-    title: "Enablement",
-    skills: ["Design systems", "Developer tooling", "Playbook authoring", "Team onboarding"],
+    title: "Engineering toolkit",
+    skills: [
+      "Python (Flask, Django, automation)",
+      "React & TypeScript",
+      "Node.js",
+      "Postgres & MariaDB",
+      "MongoDB",
+    ],
   },
 ];
 
@@ -37,7 +59,7 @@ export function Skills() {
   return (
     <div>
       <SectionHeading id="skills" eyebrow="SKILLS">
-        A multidisciplinary toolkit for moving from concept to confident launch.
+        Tooling and practices I rely on to automate security at scale.
       </SectionHeading>
       <motion.div
         className="section-padding mx-auto mt-12 grid max-w-6xl gap-6 sm:grid-cols-2"

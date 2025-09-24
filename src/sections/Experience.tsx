@@ -3,39 +3,51 @@ import { SectionHeading } from "../components/SectionHeading";
 
 const experiences = [
   {
-    company: "Northwind Labs",
-    title: "Head of Product Engineering",
+    company: "Wellthy",
+    title: "Senior DevSecOps Engineer II (Lead)",
     period: "2022 — Present",
     summary:
-      "Scaled the platform and product teams from seed to Series C while launching AI-powered research and onboarding workflows.",
+      "Lead cloud security and compliance engineering for a healthcare caregiver platform, pairing automation with proactive response.",
     achievements: [
-      "Directed a multi-disciplinary squad that shipped an LLM-backed insights assistant adopted by 78% of customer success teams within the first quarter.",
-      "Established an experimentation program with weekly synth reviews, resulting in a 24% increase in activation for mid-market customers.",
-      "Implemented guardrails for prompt libraries, red teaming, and observability that met enterprise compliance requirements.",
+      "Integrated full-stack security tooling (SAST, SCA, IaC, container, CSPM) into CI/CD with automated remediation pathways.",
+      "Built an ML-enhanced vulnerability pipeline plus Dependency Track SBOM monitoring to centralize risk reporting in Sumo Logic.",
+      "Sustained a 0-day MTTR on critical issues while passing consecutive SOC 2 Type II audits and maintaining HIPAA/NIST/GDPR readiness.",
     ],
   },
   {
-    company: "Cedar & Haze",
-    title: "Principal Product Strategist",
-    period: "2018 — 2022",
+    company: "CVS Health / Aetna",
+    title: "Senior DevSecOps Engineer",
+    period: "2020 — 2022",
     summary:
-      "Consulted with public and private sector organizations on digital transformation, AI adoption, and service design.",
+      "Owned DevSecOps enablement for consumer health products, supporting thousands of engineers shipping securely at scale.",
     achievements: [
-      "Designed a modular design system and delivery toolkit used across six agencies, improving release cadence by 3x.",
-      "Facilitated discovery for a global non-profit to redefine their grants platform, combining research synthesis with roadmap storytelling.",
-      "Embedded with engineering to migrate mission-critical workloads to serverless infrastructure with zero downtime.",
+      "Centralized Data Theorem, Checkmarx, Prisma Cloud, Nexus IQ, and Snyk inside an AWS-hosted management portal.",
+      "Authored secure-by-default Docker images and automation microservices (Python, Node.js, Bash) that hardened CI/CD workflows.",
+      "Coached 4,000+ engineers through threat reviews, pipeline tuning, and brown-bag sessions to accelerate compliant releases.",
     ],
   },
   {
-    company: "Fluxline",
-    title: "Senior Frontend Engineer",
-    period: "2015 — 2018",
+    company: "Parsons",
+    title: "Full Stack Software Engineer",
+    period: "2019 — 2020",
     summary:
-      "Joined as the first frontend hire to rebuild the analytics product while establishing accessibility and delivery standards.",
+      "Delivered mission-ready microservices and analytics pipelines for defense clients with strict security requirements.",
     achievements: [
-      "Shipped a component library that accelerated new feature delivery by 40% and reduced UI defects by half.",
-      "Led user testing cycles with enterprise customers, translating insights into roadmap commitments and executive updates.",
-      "Mentored engineers and designers on data visualization best practices and collaborative rituals.",
+      "Developed scalable object recognition services using Darknet and YOLO to process imagery and video intelligence.",
+      "Shipped production REST services in Java/Spring and modernized AngularJS front-ends with automated Postman test suites.",
+      "Hardened NLP and ETL pipelines through SAST remediation and cloud data enrichment patterns.",
+    ],
+  },
+  {
+    company: "Formulated, LLC",
+    title: "Founder / Software Engineer",
+    period: "2017 — 2020",
+    summary:
+      "Ran a security-focused consultancy delivering conversion-driven web platforms for small businesses.",
+    achievements: [
+      "Lifted client lead conversion rates by 79%, unlocking more than $300K in revenue for a flagship customer.",
+      "Delivered full-stack applications with maintainable CI/CD pipelines for timely, secure updates.",
+      "Conducted penetration testing and security audits to harden infrastructure for each engagement.",
     ],
   },
 ];
@@ -44,7 +56,7 @@ export function Experience() {
   return (
     <div>
       <SectionHeading id="experience" eyebrow="EXPERIENCE">
-        Guiding teams through high-stakes product chapters.
+        Security leadership across healthcare, enterprise, and defense teams.
       </SectionHeading>
       <div className="section-padding mx-auto mt-12 max-w-6xl space-y-10">
         {experiences.map((experience, index) => (

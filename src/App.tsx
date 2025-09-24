@@ -6,6 +6,7 @@ import { Hero } from "./sections/Hero";
 import { About } from "./sections/About";
 import { Experience } from "./sections/Experience";
 import { Projects } from "./sections/Projects";
+import { Photography } from "./sections/Photography";
 import { Skills } from "./sections/Skills";
 import { Speaking } from "./sections/Speaking";
 import { Contact } from "./sections/Contact";
@@ -16,8 +17,9 @@ const sections = [
   { id: "about", label: "About" },
   { id: "experience", label: "Experience" },
   { id: "projects", label: "Projects" },
+  { id: "photography", label: "Photography" },
   { id: "skills", label: "Skills" },
-  { id: "speaking", label: "Speaking" },
+  { id: "speaking", label: "Leadership" },
   { id: "contact", label: "Contact" },
 ] as const;
 
@@ -42,6 +44,7 @@ function App() {
           <About />
           <Experience />
           <Projects />
+          <Photography />
           <Skills />
           <Speaking />
           <Contact />
