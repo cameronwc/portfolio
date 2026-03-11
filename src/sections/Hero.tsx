@@ -1,84 +1,108 @@
 import { motion } from "framer-motion";
 
-const heroHighlights = [
-  {
-    title: "0-day MTTR",
-    description: "Critical vulnerabilities remediated the same day through automated escalation and playbooks.",
-  },
-  {
-    title: "Full SDLC coverage",
-    description: "SAST, SCA, IaC, container, and CSPM tooling wired into CI/CD with policy-backed gates.",
-  },
-  {
-    title: "Audit-ready automation",
-    description: "SOC 2 Type II, HIPAA, NIST, and GDPR controls instrumented with evidence collection built-in.",
-  },
-  {
-    title: "Engineer enablement",
-    description: "Bug bounty ops, secure defaults, and coaching programs that keep 4,000+ engineers shipping safely.",
-  },
-];
-
 export function Hero() {
   return (
-    <section
-      id="home"
-      className="section-padding mx-auto mt-32 flex max-w-6xl flex-col gap-12"
-    >
-      <motion.div
-        initial={{ opacity: 0, y: 24 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, ease: "easeOut" }}
-        className="max-w-3xl space-y-8"
-      >
-        <span className="inline-flex w-fit items-center gap-2 rounded-full border border-brand-400/40 bg-brand-500/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.35em] text-brand-200">
-          Cameron Cooper — DevSecOps & Cloud Security Engineer
-        </span>
-        <h1 className="font-display text-4xl leading-tight text-white sm:text-5xl md:text-6xl">
-          I build automation that keeps modern cloud platforms compliant, observable, and resilient.
-        </h1>
-        <p className="text-lg text-slate-300">
-          Cloud security and DevSecOps engineer with 7+ years of experience embedding guardrails into the entire SDLC. I lead
-          cross-functional teams through threat modeling, tooling integration, and incident response so regulated SaaS products
-          stay ahead of audits and adversaries alike.
-        </p>
-        <div className="flex flex-wrap gap-4">
+    <section className="relative flex min-h-screen items-center justify-center overflow-hidden">
+      {/* Background effects */}
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute left-1/2 top-0 h-[600px] w-[800px] -translate-x-1/2 -translate-y-1/4 rounded-full bg-accent-500/[0.07] blur-[120px]" />
+        <div className="dot-grid absolute inset-0" />
+        <div className="absolute bottom-0 h-32 w-full bg-gradient-to-t from-gray-950 to-transparent" />
+      </div>
+
+      <div className="section-container relative z-10 py-32 text-center">
+        <motion.p
+          className="font-mono text-sm tracking-[0.3em] text-accent-400"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
+          SENIOR DEVSECOPS ENGINEER II AT WELLTHY
+        </motion.p>
+
+        <motion.h1
+          className="mt-8 text-5xl font-extrabold tracking-tight text-white sm:text-7xl lg:text-8xl"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.15, ease: "easeOut" }}
+        >
+          Cameron
+          <br />
+          Cooper
+        </motion.h1>
+
+        <motion.p
+          className="mx-auto mt-8 max-w-2xl text-lg leading-relaxed text-slate-400 sm:text-xl"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
+        >
+          I architect security automation that keeps cloud platforms compliant,
+          observable, and resilient — so teams ship fast without compromising
+          trust.
+        </motion.p>
+
+        <motion.div
+          className="mt-10 flex flex-wrap items-center justify-center gap-4"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.45, ease: "easeOut" }}
+        >
           <a
-            href="#projects"
-            className="rounded-full bg-white px-6 py-3 text-sm font-semibold text-slate-900 shadow-glow transition hover:-translate-y-0.5 hover:shadow-lg"
+            href="#experience"
+            className="rounded-lg bg-accent-500 px-8 py-3.5 text-sm font-semibold text-white transition hover:bg-accent-400 focus:outline-none focus:ring-2 focus:ring-accent-400 focus:ring-offset-2 focus:ring-offset-gray-950"
           >
-            Explore security programs
+            Explore My Work
           </a>
           <a
-            href="mailto:cameron@coop.ninja"
-            className="rounded-full border border-white/30 px-6 py-3 text-sm font-semibold text-white/90 transition hover:border-white/60 hover:bg-white/10"
+            href="/Cameron_Cooper_Resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-lg border border-white/[0.12] px-8 py-3.5 text-sm font-semibold text-slate-300 transition hover:border-white/[0.25] hover:text-white"
           >
-            Start a security conversation
+            Resume
           </a>
-        </div>
-      </motion.div>
-      <motion.ul
-        className="grid gap-6 pt-4 sm:grid-cols-2 lg:grid-cols-4"
-        initial="hidden"
-        animate="visible"
-        variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.1 } } }}
-      >
-        {heroHighlights.map((highlight) => (
-          <motion.li
-            key={highlight.title}
-            variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0 } }}
-            className="card-surface flex h-full items-start gap-4 rounded-3xl border border-white/10 bg-slate-900/70 p-6 shadow-lg backdrop-blur"
+          <a
+            href="#contact"
+            className="rounded-lg border border-white/[0.12] px-8 py-3.5 text-sm font-semibold text-slate-300 transition hover:border-white/[0.25] hover:text-white"
           >
-            <span className="flex h-9 w-9 flex-none items-center justify-center rounded-full bg-brand-500/85 text-base font-semibold text-white">
-              •
+            Get In Touch
+          </a>
+        </motion.div>
+
+        {/* Scroll indicator */}
+        <motion.div
+          className="absolute bottom-12 left-1/2 -translate-x-1/2"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.2, duration: 0.8 }}
+        >
+          <motion.div
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            className="flex flex-col items-center gap-2"
+          >
+            <span className="text-xs tracking-[0.2em] text-slate-600">
+              SCROLL
             </span>
-            <div className="space-y-2 text-left">
-              <h3 className="text-lg font-semibold text-white">{highlight.title}</h3>
-              <p className="text-sm leading-relaxed text-slate-200">{highlight.description}</p>
-            </div>
-          </motion.li>
-        ))}
-      </motion.ul>
+            <svg
+              width="16"
+              height="24"
+              viewBox="0 0 16 24"
+              fill="none"
+              className="text-slate-600"
+            >
+              <path
+                d="M8 4v12m0 0l-4-4m4 4l4-4"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </motion.div>
+        </motion.div>
+      </div>
     </section>
   );
 }
