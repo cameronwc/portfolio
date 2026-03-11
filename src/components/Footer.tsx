@@ -1,10 +1,38 @@
 export function Footer() {
   return (
-    <footer className="section-padding mx-auto mt-24 max-w-5xl pb-12 text-center text-sm text-slate-400">
-      <p>© {new Date().getFullYear()} Cameron Cooper. Built with React, Vite, Tailwind, and Framer Motion.</p>
-      <p className="mt-2 text-xs text-slate-500">
-        Secured by automated dependency scanning, CI/CD guardrails, and infrastructure-as-code best practices.
-      </p>
+    <footer className="border-t border-white/[0.06] py-8">
+      <div className="section-container flex flex-col items-center justify-between gap-4 sm:flex-row">
+        <span className="font-mono text-xs text-slate-600">
+          CC<span className="text-accent-500/50">.</span>{" "}
+          {new Date().getFullYear()}
+        </span>
+        <div className="flex items-center gap-6">
+          <a
+            href="https://github.com/cameronwc"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-xs text-slate-600 transition-colors hover:text-slate-400"
+          >
+            GitHub
+          </a>
+          <a
+            href="https://www.linkedin.com/in/cameronwc"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-xs text-slate-600 transition-colors hover:text-slate-400"
+          >
+            LinkedIn
+          </a>
+          <a
+            href="https://cameroncooperphotography.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-xs text-slate-600 transition-colors hover:text-slate-400"
+          >
+            Photography
+          </a>
+        </div>
+      </div>
     </footer>
   );
 }
