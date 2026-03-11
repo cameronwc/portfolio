@@ -55,7 +55,7 @@ export function Hero() {
             Explore My Work
           </a>
           <a
-            href="/Cameron_Cooper_Resume.pdf"
+            href={`${import.meta.env.BASE_URL}Cameron_Cooper_Resume.pdf`}
             target="_blank"
             rel="noopener noreferrer"
             className="rounded-lg border border-white/[0.12] px-8 py-3.5 text-sm font-semibold text-slate-300 transition hover:border-white/[0.25] hover:text-white"
