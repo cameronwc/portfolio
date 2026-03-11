@@ -1,15 +1,15 @@
 import { motion } from "framer-motion";
 
 const photos = [
-  { src: "/photography/DSC05565-Pano.jpg", alt: "Panoramic landscape" },
-  { src: "/photography/DSC03713.jpg", alt: "Landscape photography" },
-  { src: "/photography/DSC05119.jpg", alt: "Nature photography" },
-  { src: "/photography/DJI_0406.jpg", alt: "Aerial drone photography" },
-  { src: "/photography/DSC05353.jpg", alt: "Travel photography" },
-  { src: "/photography/DSC08871.jpg", alt: "Couples portrait" },
-  { src: "/photography/DSC05371.jpg", alt: "Adventure photography" },
-  { src: "/photography/DSC03037.jpg", alt: "Coastal photography" },
-  { src: "/photography/DSC05523.jpg", alt: "Scenic photography" },
+  { src: "photography/DSC05565-Pano.jpg", alt: "Panoramic landscape" },
+  { src: "photography/DSC03713.jpg", alt: "Landscape photography" },
+  { src: "photography/DSC05119.jpg", alt: "Nature photography" },
+  { src: "photography/DJI_0406.jpg", alt: "Aerial drone photography" },
+  { src: "photography/DSC05353.jpg", alt: "Travel photography" },
+  { src: "photography/DSC08871.jpg", alt: "Couples portrait" },
+  { src: "photography/DSC05371.jpg", alt: "Adventure photography" },
+  { src: "photography/DSC03037.jpg", alt: "Coastal photography" },
+  { src: "photography/DSC05523.jpg", alt: "Scenic photography" },
 ];
 
 export function Photography() {
@@ -55,7 +55,7 @@ export function Photography() {
               transition={{ duration: 0.5, delay: index * 0.08 }}
             >
               <img
-                src={photo.src}
+                src={`${import.meta.env.BASE_URL}${photo.src}`}
                 alt={photo.alt}
                 loading="lazy"
                 className="w-full object-cover transition-transform duration-500 group-hover:scale-105"
