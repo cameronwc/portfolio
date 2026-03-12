@@ -7,6 +7,7 @@ import { Leadership } from "./sections/Leadership";
 import { Expertise } from "./sections/Expertise";
 import { Certifications } from "./sections/Certifications";
 import { Projects } from "./sections/Projects";
+import { Book } from "./sections/Book";
 import { Photography } from "./sections/Photography";
 import { Contact } from "./sections/Contact";
 import { Footer } from "./components/Footer";
@@ -24,6 +25,7 @@ function App() {
         <Expertise />
         <Certifications />
         <Projects />
+        <Book />
         <Photography />
         <Contact />
       </main>
