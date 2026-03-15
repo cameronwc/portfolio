@@ -27,7 +27,7 @@ export function Book() {
           transition={{ duration: 0.5, delay: 0.1 }}
         >
           <img
-            src="/book-cover.png"
+            src="/book-cover.jpg"
             alt="Breaking into DevSecOps book cover"
             className="w-40 flex-none rounded-lg shadow-lg sm:w-48"
           />
