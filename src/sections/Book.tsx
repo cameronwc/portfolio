@@ -59,7 +59,7 @@ export function Book() {
 
             <div className="mt-6">
               <a
-                href="https://www.amazon.com/dp/B0F1VFS4PG"
+                href="https://www.amazon.com/Breaking-into-DevSecOps-Practical-Launching-ebook/dp/B0GSHSK4H5"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-block rounded-md border border-white/[0.08] px-4 py-2 text-sm text-slate-300 transition hover:border-white/[0.2] hover:text-white"
