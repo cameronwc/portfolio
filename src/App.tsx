@@ -1,6 +1,7 @@
 import { Navigation } from "./components/Navigation";
 import { Hero } from "./sections/Hero";
 import { Metrics } from "./sections/Metrics";
+import { Clients } from "./sections/Clients";
 import { About } from "./sections/About";
 import { Experience } from "./sections/Experience";
 import { Leadership } from "./sections/Leadership";
@@ -19,6 +20,7 @@ function App() {
       <main>
         <Hero />
         <Metrics />
+        <Clients />
         <About />
         <Experience />
         <Leadership />
