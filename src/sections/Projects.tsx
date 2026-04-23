@@ -11,6 +11,23 @@ const projects = [
     link: "https://usesmokesignal.com",
   },
   {
+    name: "LEAP!",
+    role: "Creator & Developer",
+    description:
+      "iOS platform jump game shipped on the App Store. Tight arcade loop tuned for one-handed play, with progression and physics tuning iterated across test builds.",
+    impact:
+      "Live on the App Store, built solo from prototype to release.",
+    link: "https://apps.apple.com/us/app/leap-platform-jump-game/id6762069983",
+  },
+  {
+    name: "Cairn",
+    role: "Creator & Developer",
+    description:
+      "Hike photos to 3D-printed topography. Feed it a folder of geotagged photos; get back an STL pair — terrain and trail — that slices cleanly on a Bambu A1 Mini for a dual-color print where the route is raised on the mountain. Extracts the track from photo EXIF, smooths GPS jitter, queries OpenTopography for a DEM covering the bounding box, then drapes the route across the terrain mesh with a configurable Z-offset so the trail reads clearly without clipping into the surface.",
+    impact:
+      "Python 3.12, uv, click, pydantic-settings, trimesh, rasterio, pyproj. Every stage is a standalone, idempotent CLI subcommand with inspectable intermediate artifacts (EXIF CSV, GPX, GeoTIFF, STL). Alpha — shipping first print of the Peru Ausangate trek.",
+  },
+  {
     name: "Home Server Platform",
     role: "Architect & Operator",
     description:
