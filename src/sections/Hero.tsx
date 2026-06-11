@@ -126,7 +126,7 @@ export function Hero() {
             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
             className="flex flex-col items-center gap-2"
           >
-            <span className="text-xs tracking-[0.2em] text-slate-600">
+            <span className="text-xs tracking-[0.2em] text-slate-500">
               SCROLL
             </span>
             <svg
@@ -134,7 +134,7 @@ export function Hero() {
               height="24"
               viewBox="0 0 16 24"
               fill="none"
-              className="text-slate-600"
+              className="text-slate-500"
             >
               <path
                 d="M8 4v12m0 0l-4-4m4 4l4-4"

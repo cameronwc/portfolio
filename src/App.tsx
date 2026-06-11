@@ -18,9 +18,10 @@ function App() {
 
   return (
     <div className="relative overflow-x-hidden">
+      <a href="#main" className="skip-link">Skip to content</a>
       <ScrollManager />
       <Navigation />
-      <main>
+      <main id="main">
         <AnimatePresence mode="wait">
           <Routes location={location} key={location.pathname}>
             <Route path="/" element={<Home />} />

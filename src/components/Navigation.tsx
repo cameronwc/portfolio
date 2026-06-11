@@ -79,6 +79,7 @@ export function Navigation() {
             className="flex h-10 w-10 items-center justify-center md:hidden"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Toggle menu"
+            aria-expanded={mobileOpen}
           >
             <div className="space-y-1.5">
               <span

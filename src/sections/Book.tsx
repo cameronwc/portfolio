@@ -29,6 +29,10 @@ export function Book() {
           <img
             src="/book-cover.jpg"
             alt="Breaking into DevSecOps book cover"
+            width={1690}
+            height={2560}
+            loading="lazy"
+            decoding="async"
             className="w-40 flex-none rounded-lg shadow-lg sm:w-48"
           />
 

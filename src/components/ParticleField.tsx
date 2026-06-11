@@ -26,6 +26,9 @@ export function ParticleField() {
     if (!container) return;
 
     const isMobile = window.matchMedia("(max-width: 767px)").matches;
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
     const count = isMobile ? MOBILE_COUNT : DESKTOP_COUNT;
 
     const scene = new THREE.Scene();
@@ -98,7 +101,7 @@ export function ParticleField() {
       mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
       mouse.y = (event.clientY / window.innerHeight) * 2 - 1;
     };
-    if (!isMobile) {
+    if (!isMobile && !prefersReducedMotion) {
       window.addEventListener("pointermove", onPointerMove, { passive: true });
     }
 
@@ -204,6 +207,11 @@ export function ParticleField() {
 
     const start = () => {
       if (running) return;
+      if (prefersReducedMotion) {
+        update(0);
+        renderer.render(scene, camera);
+        return;
+      }
       running = true;
       lastTime = performance.now();
       rafId = requestAnimationFrame(renderLoop);
