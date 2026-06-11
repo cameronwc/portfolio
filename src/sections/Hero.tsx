@@ -1,6 +1,7 @@
 import { lazy, Suspense } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { Magnetic } from "../components/Magnetic";
 
 // Lazy-loaded so Three.js ships as its own chunk and never blocks first paint
 const ParticleField = lazy(() =>
@@ -34,8 +35,8 @@ export function Hero() {
 
         <motion.h1
           className="shimmer-text mt-8 text-5xl font-extrabold tracking-tight sm:text-7xl lg:text-8xl"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 30, filter: "blur(8px)" }}
+          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ duration: 0.8, delay: 0.15, ease: "easeOut" }}
         >
           Cameron
@@ -60,26 +61,32 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.45, ease: "easeOut" }}
         >
-          <a
-            href="#experience"
-            className="rounded-lg bg-accent-500 px-8 py-3.5 text-sm font-semibold text-white transition hover:bg-accent-400 hover:shadow-[0_0_28px_rgba(6,182,212,0.45)] focus:outline-none focus:ring-2 focus:ring-accent-400 focus:ring-offset-2 focus:ring-offset-gray-950"
-          >
-            Explore My Work
-          </a>
-          <a
-            href={`${import.meta.env.BASE_URL}Cameron_Cooper_Resume.pdf`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded-lg border border-white/[0.12] px-8 py-3.5 text-sm font-semibold text-slate-300 transition hover:border-accent-500/40 hover:text-white hover:shadow-[0_0_20px_rgba(6,182,212,0.25)]"
-          >
-            Resume
-          </a>
-          <a
-            href="#contact"
-            className="rounded-lg border border-white/[0.12] px-8 py-3.5 text-sm font-semibold text-slate-300 transition hover:border-accent-500/40 hover:text-white hover:shadow-[0_0_20px_rgba(6,182,212,0.25)]"
-          >
-            Get In Touch
-          </a>
+          <Magnetic>
+            <a
+              href="#experience"
+              className="rounded-lg bg-accent-500 px-8 py-3.5 text-sm font-semibold text-white transition hover:bg-accent-400 hover:shadow-[0_0_28px_rgba(6,182,212,0.45)] focus:outline-none focus:ring-2 focus:ring-accent-400 focus:ring-offset-2 focus:ring-offset-gray-950"
+            >
+              Explore My Work
+            </a>
+          </Magnetic>
+          <Magnetic>
+            <a
+              href={`${import.meta.env.BASE_URL}Cameron_Cooper_Resume.pdf`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-lg border border-white/[0.12] px-8 py-3.5 text-sm font-semibold text-slate-300 transition hover:border-accent-500/40 hover:text-white hover:shadow-[0_0_20px_rgba(6,182,212,0.25)]"
+            >
+              Resume
+            </a>
+          </Magnetic>
+          <Magnetic>
+            <a
+              href="#contact"
+              className="rounded-lg border border-white/[0.12] px-8 py-3.5 text-sm font-semibold text-slate-300 transition hover:border-accent-500/40 hover:text-white hover:shadow-[0_0_20px_rgba(6,182,212,0.25)]"
+            >
+              Get In Touch
+            </a>
+          </Magnetic>
         </motion.div>
 
         <motion.div
