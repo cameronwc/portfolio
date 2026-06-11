@@ -1,4 +1,12 @@
+import { lazy, Suspense } from "react";
 import { motion } from "framer-motion";
+
+// Lazy-loaded so Three.js ships as its own chunk and never blocks first paint
+const ParticleField = lazy(() =>
+  import("../components/ParticleField").then((module) => ({
+    default: module.ParticleField,
+  }))
+);
 
 export function Hero() {
   return (
@@ -6,7 +14,10 @@ export function Hero() {
       {/* Background effects */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute left-1/2 top-0 h-[600px] w-[800px] -translate-x-1/2 -translate-y-1/4 rounded-full bg-accent-500/[0.07] blur-[120px]" />
-        <div className="dot-grid absolute inset-0" />
+        <Suspense fallback={null}>
+          <ParticleField />
+        </Suspense>
+        <div className="scanlines absolute inset-0" />
         <div className="absolute bottom-0 h-32 w-full bg-gradient-to-t from-gray-950 to-transparent" />
       </div>
 
@@ -21,7 +32,7 @@ export function Hero() {
         </motion.p>
 
         <motion.h1
-          className="mt-8 text-5xl font-extrabold tracking-tight text-white sm:text-7xl lg:text-8xl"
+          className="shimmer-text mt-8 text-5xl font-extrabold tracking-tight sm:text-7xl lg:text-8xl"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.15, ease: "easeOut" }}
@@ -50,7 +61,7 @@ export function Hero() {
         >
           <a
             href="#experience"
-            className="rounded-lg bg-accent-500 px-8 py-3.5 text-sm font-semibold text-white transition hover:bg-accent-400 focus:outline-none focus:ring-2 focus:ring-accent-400 focus:ring-offset-2 focus:ring-offset-gray-950"
+            className="rounded-lg bg-accent-500 px-8 py-3.5 text-sm font-semibold text-white transition hover:bg-accent-400 hover:shadow-[0_0_28px_rgba(6,182,212,0.45)] focus:outline-none focus:ring-2 focus:ring-accent-400 focus:ring-offset-2 focus:ring-offset-gray-950"
           >
             Explore My Work
           </a>
@@ -58,13 +69,13 @@ export function Hero() {
             href={`${import.meta.env.BASE_URL}Cameron_Cooper_Resume.pdf`}
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-lg border border-white/[0.12] px-8 py-3.5 text-sm font-semibold text-slate-300 transition hover:border-white/[0.25] hover:text-white"
+            className="rounded-lg border border-white/[0.12] px-8 py-3.5 text-sm font-semibold text-slate-300 transition hover:border-accent-500/40 hover:text-white hover:shadow-[0_0_20px_rgba(6,182,212,0.25)]"
           >
             Resume
           </a>
           <a
             href="#contact"
-            className="rounded-lg border border-white/[0.12] px-8 py-3.5 text-sm font-semibold text-slate-300 transition hover:border-white/[0.25] hover:text-white"
+            className="rounded-lg border border-white/[0.12] px-8 py-3.5 text-sm font-semibold text-slate-300 transition hover:border-accent-500/40 hover:text-white hover:shadow-[0_0_20px_rgba(6,182,212,0.25)]"
           >
             Get In Touch
           </a>

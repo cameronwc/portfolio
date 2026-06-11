@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useRef, useState } from "react";
+import { motion, AnimatePresence, useScroll } from "framer-motion";
 
 const VISIBLE_COUNT = 12;
 
@@ -91,6 +91,11 @@ const timeline = [
 
 export function Experience() {
   const [expanded, setExpanded] = useState(false);
+  const timelineRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: timelineRef,
+    offset: ["start 0.8", "end 0.4"],
+  });
   const visibleAchievements = expanded
     ? wellthy.achievements
     : wellthy.achievements.slice(0, VISIBLE_COUNT);
@@ -118,14 +123,30 @@ export function Experience() {
           </h2>
         </motion.div>
 
+        {/* Timeline rail draws downward as the section scrolls into view */}
+        <div ref={timelineRef} className="relative mt-12 pl-8 sm:pl-12">
+          <div
+            className="absolute bottom-0 left-1 top-0 w-0.5 bg-white/[0.06]"
+            aria-hidden="true"
+          />
+          <motion.div
+            className="absolute bottom-0 left-1 top-0 w-0.5 origin-top bg-gradient-to-b from-accent-400 via-accent-500 to-accent-500/30 shadow-glow"
+            style={{ scaleY: scrollYProgress }}
+            aria-hidden="true"
+          />
+
         {/* Featured: Wellthy */}
         <motion.article
-          className="mt-12 rounded-xl border border-accent-500/20 bg-accent-500/[0.03] p-8 sm:p-10"
+          className="relative rounded-xl border border-accent-500/20 border-l-2 border-l-accent-500/30 bg-accent-500/[0.03] p-8 transition-all duration-300 hover:border-l-accent-400 hover:shadow-[-12px_0_32px_-12px_rgba(6,182,212,0.5)] sm:p-10"
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.6 }}
         >
+          <span
+            className="absolute -left-8 top-9 h-2.5 w-2.5 rounded-full border-2 border-accent-400 bg-gray-950 shadow-glow-sm sm:-left-12"
+            aria-hidden="true"
+          />
           <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
             <div>
               <div className="flex items-center gap-3">
@@ -201,12 +222,16 @@ export function Experience() {
           {timeline.map((role, index) => (
             <motion.article
               key={role.company}
-              className="rounded-xl border border-white/[0.06] bg-white/[0.02] p-6 transition-colors hover:border-white/[0.1] sm:p-8"
+              className="group relative rounded-xl border border-white/[0.06] border-l-2 border-l-white/[0.08] bg-white/[0.02] p-6 transition-all duration-300 hover:border-white/[0.1] hover:border-l-accent-400 hover:shadow-[-12px_0_32px_-12px_rgba(6,182,212,0.5)] sm:p-8"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.5, delay: index * 0.08 }}
             >
+              <span
+                className="absolute -left-8 top-7 h-2.5 w-2.5 rounded-full border-2 border-slate-500 bg-gray-950 transition-colors duration-300 group-hover:border-accent-400 sm:-left-12"
+                aria-hidden="true"
+              />
               <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
                 <div>
                   <h3 className="text-lg font-semibold text-white">
@@ -234,6 +259,7 @@ export function Experience() {
               </ul>
             </motion.article>
           ))}
+        </div>
         </div>
       </div>
     </section>

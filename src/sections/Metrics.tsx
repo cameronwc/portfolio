@@ -1,5 +1,5 @@
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { animate, motion, useInView } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 
 const metrics = [
   {
@@ -24,6 +24,38 @@ const metrics = [
   },
 ];
 
+// Split "4,000+" into a countable number (4000) and its suffix ("+")
+function parseValue(value: string): { target: number; suffix: string } {
+  const match = value.match(/^([\d,]+)(.*)$/);
+  if (!match) return { target: 0, suffix: value };
+  return {
+    target: parseInt(match[1].replace(/,/g, ""), 10),
+    suffix: match[2],
+  };
+}
+
+function CountUpValue({ value, start }: { value: string; start: boolean }) {
+  const { target, suffix } = parseValue(value);
+  const [display, setDisplay] = useState(0);
+
+  useEffect(() => {
+    if (!start) return;
+    const controls = animate(0, target, {
+      duration: 1.5,
+      ease: "easeOut",
+      onUpdate: (latest) => setDisplay(Math.round(latest)),
+    });
+    return () => controls.stop();
+  }, [start, target]);
+
+  return (
+    <span className="text-3xl font-bold tabular-nums text-white sm:text-4xl">
+      {display.toLocaleString("en-US")}
+      {suffix}
+    </span>
+  );
+}
+
 function MetricCard({
   metric,
   index,
@@ -42,13 +74,17 @@ function MetricCard({
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5, delay: index * 0.1 }}
     >
-      <span className="text-3xl font-bold text-white sm:text-4xl">
-        {metric.value}
-      </span>
-      <span className="mt-1 font-mono text-sm font-medium tracking-wider text-accent-400">
+      <CountUpValue value={metric.value} start={isInView} />
+      <span className="mt-2 rounded border border-accent-500/20 bg-accent-500/[0.06] px-2 py-0.5 font-mono text-xs font-medium uppercase tracking-[0.2em] text-accent-400">
         {metric.label}
       </span>
       <span className="mt-2 text-xs text-slate-500">{metric.description}</span>
+      {index < metrics.length - 1 && (
+        <span
+          className="absolute -right-6 top-1/2 hidden h-14 w-px -translate-y-1/2 bg-gradient-to-b from-transparent via-accent-500/40 to-transparent shadow-glow-sm md:block"
+          aria-hidden="true"
+        />
+      )}
     </motion.div>
   );
 }

@@ -181,6 +181,21 @@ const skillCategories = [
   },
 ];
 
+const tagContainer = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.02 } },
+};
+
+const tagItem = {
+  hidden: { opacity: 0, y: 8, scale: 0.95 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: { duration: 0.35, ease: "easeOut" },
+  },
+};
+
 export function Expertise() {
   return (
     <section
@@ -216,9 +231,15 @@ export function Expertise() {
               <h3 className="text-base font-semibold text-white">
                 {category.title}
               </h3>
-              <div className="mt-4 space-y-3">
+              <motion.div
+                className="mt-4 divide-y divide-white/[0.05]"
+                variants={tagContainer}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.2 }}
+              >
                 {category.subcategories.map((sub) => (
-                  <div key={sub.label || "default"}>
+                  <div key={sub.label || "default"} className="py-3 first:pt-0 last:pb-0">
                     {sub.label && (
                       <p className="mb-1.5 font-mono text-[10px] uppercase tracking-widest text-slate-500">
                         {sub.label}
@@ -226,17 +247,18 @@ export function Expertise() {
                     )}
                     <div className="flex flex-wrap gap-1.5">
                       {sub.skills.map((skill) => (
-                        <span
+                        <motion.span
                           key={skill}
-                          className="rounded-md border border-white/[0.06] bg-white/[0.03] px-2.5 py-1 text-xs text-slate-300"
+                          variants={tagItem}
+                          className="rounded-md border border-white/[0.06] bg-white/[0.03] px-2.5 py-1 text-xs text-slate-300 transition-colors duration-200 hover:border-accent-500/40 hover:bg-accent-500/[0.06] hover:text-accent-200 hover:shadow-glow-sm"
                         >
                           {skill}
-                        </span>
+                        </motion.span>
                       ))}
                     </div>
                   </div>
                 ))}
-              </div>
+              </motion.div>
             </motion.div>
           ))}
         </div>
