@@ -122,7 +122,7 @@ export function Projects() {
               <p className="mt-3 flex-1 text-sm leading-relaxed text-slate-400">
                 {project.description}
               </p>
-              <p className="mt-4 border-t border-white/[0.06] pt-4 text-sm text-slate-500">
+              <p className="mt-4 border-t border-white/[0.06] pt-4 text-sm text-slate-400">
                 {project.impact}
               </p>
             </motion.article>

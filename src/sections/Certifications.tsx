@@ -81,7 +81,7 @@ export function Certifications() {
                 <h3 className="text-sm font-semibold text-white">
                   {cert.name}
                 </h3>
-                <p className="mt-1 text-xs text-slate-500">
+                <p className="mt-1 text-xs text-slate-400">
                   {cert.issuer}
                   {cert.year && ` — ${cert.year}`}
                 </p>

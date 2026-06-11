@@ -84,7 +84,7 @@ function MetricCard({
       <span className="mt-2 rounded border border-accent-500/20 bg-accent-500/[0.06] px-2 py-0.5 font-mono text-xs font-medium uppercase tracking-[0.2em] text-accent-400">
         {metric.label}
       </span>
-      <span className="mt-2 text-xs text-slate-500">{metric.description}</span>
+      <span className="mt-2 text-xs text-slate-400">{metric.description}</span>
       {index < metrics.length - 1 && (
         <span
           className="absolute -right-6 top-1/2 hidden h-14 w-px -translate-y-1/2 bg-gradient-to-b from-transparent via-accent-500/40 to-transparent shadow-glow-sm md:block"

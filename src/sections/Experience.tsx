@@ -160,11 +160,11 @@ export function Experience() {
               <p className="mt-1 text-sm font-medium text-slate-300">
                 {wellthy.title}
               </p>
-              <p className="mt-0.5 text-xs text-slate-500">
+              <p className="mt-0.5 text-xs text-slate-400">
                 {wellthy.location}
               </p>
             </div>
-            <span className="font-mono text-sm text-slate-500">
+            <span className="font-mono text-sm text-slate-400">
               {wellthy.period}
             </span>
           </div>
@@ -238,11 +238,11 @@ export function Experience() {
                     {role.company}
                   </h3>
                   <p className="mt-0.5 text-sm text-slate-400">{role.title}</p>
-                  <p className="mt-0.5 text-xs text-slate-500">
+                  <p className="mt-0.5 text-xs text-slate-400">
                     {role.location}
                   </p>
                 </div>
-                <span className="font-mono text-sm text-slate-500">
+                <span className="font-mono text-sm text-slate-400">
                   {role.period}
                 </span>
               </div>
