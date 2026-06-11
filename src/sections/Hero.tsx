@@ -90,7 +90,7 @@ export function Hero() {
         >
           <Link
             to="/work/ai-remediation"
-            className="group inline-flex items-center gap-2 font-mono text-xs tracking-wider text-slate-500 transition-colors hover:text-accent-400"
+            className="group inline-flex items-center gap-2 font-mono text-xs tracking-wider text-slate-400 transition-colors hover:text-accent-400"
           >
             FEATURED: AI-POWERED VULNERABILITY REMEDIATION
             <svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true" className="transition-transform group-hover:translate-x-0.5">

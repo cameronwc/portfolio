@@ -64,6 +64,7 @@ export function Projects() {
         >
           <Link
             to="/work/ai-remediation"
+            aria-label="AI-Powered Vulnerability Remediation case study"
             className="gradient-border group mt-12 flex flex-col gap-6 rounded-xl border border-accent-500/20 bg-accent-500/[0.03] p-8 transition-shadow duration-300 hover:shadow-glow sm:flex-row sm:items-center sm:justify-between sm:p-10"
           >
             <div>
