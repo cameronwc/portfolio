@@ -171,10 +171,15 @@ body {
   top: 16px;
 }
 
-/* Keyboard focus rings */
+/* Keyboard focus rings — outlines follow each element's own border-radius */
 a:focus-visible,
 button:focus-visible {
   outline: 2px solid #22d3ee;
   outline-offset: 2px;
-  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skip-link {
+    transition: none;
+  }
 }

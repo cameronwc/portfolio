@@ -235,6 +235,11 @@ export function ParticleField() {
       camera.aspect = width / height;
       camera.updateProjectionMatrix();
       renderer.setSize(width, height);
+      // setSize clears the buffer; with no render loop running, repaint the still frame
+      if (prefersReducedMotion) {
+        update(0);
+        renderer.render(scene, camera);
+      }
     };
     window.addEventListener("resize", onResize);
 

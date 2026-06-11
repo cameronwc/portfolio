@@ -72,7 +72,7 @@ export function Hero() {
           <Magnetic>
             <a
               href="#experience"
-              className="rounded-lg bg-accent-500 px-8 py-3.5 text-sm font-semibold text-white transition hover:bg-accent-400 hover:shadow-[0_0_28px_rgba(6,182,212,0.45)] focus:outline-none focus:ring-2 focus:ring-accent-400 focus:ring-offset-2 focus:ring-offset-gray-950"
+              className="rounded-lg bg-accent-500 px-8 py-3.5 text-sm font-semibold text-white transition hover:bg-accent-400 hover:shadow-[0_0_28px_rgba(6,182,212,0.45)]"
             >
               Explore My Work
             </a>

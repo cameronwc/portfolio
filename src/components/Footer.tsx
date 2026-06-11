@@ -11,7 +11,7 @@ export function Footer() {
             href="https://github.com/cameronwc"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-xs text-slate-500 transition-colors hover:text-slate-400"
+            className="text-xs text-slate-400 transition-colors hover:text-slate-200"
           >
             GitHub
           </a>
@@ -19,7 +19,7 @@ export function Footer() {
             href="https://www.linkedin.com/in/cameronwc"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-xs text-slate-500 transition-colors hover:text-slate-400"
+            className="text-xs text-slate-400 transition-colors hover:text-slate-200"
           >
             LinkedIn
           </a>
@@ -27,7 +27,7 @@ export function Footer() {
             href="https://cameroncooperphotography.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-xs text-slate-500 transition-colors hover:text-slate-400"
+            className="text-xs text-slate-400 transition-colors hover:text-slate-200"
           >
             Photography
           </a>

@@ -21,7 +21,7 @@ function App() {
       <a href="#main" className="skip-link">Skip to content</a>
       <ScrollManager />
       <Navigation />
-      <main id="main">
+      <main id="main" tabIndex={-1} className="outline-none">
         <AnimatePresence mode="wait">
           <Routes location={location} key={location.pathname}>
             <Route path="/" element={<Home />} />

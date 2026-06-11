@@ -1,4 +1,4 @@
-import { animate, motion, useInView } from "framer-motion";
+import { animate, motion, useInView, useReducedMotion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
 const metrics = [
@@ -37,16 +37,22 @@ function parseValue(value: string): { target: number; suffix: string } {
 function CountUpValue({ value, start }: { value: string; start: boolean }) {
   const { target, suffix } = parseValue(value);
   const [display, setDisplay] = useState(0);
+  const reduceMotion = useReducedMotion();
 
   useEffect(() => {
     if (!start) return;
+    // The standalone animate() runs outside MotionConfig's reach
+    if (reduceMotion) {
+      setDisplay(target);
+      return;
+    }
     const controls = animate(0, target, {
       duration: 1.5,
       ease: "easeOut",
       onUpdate: (latest) => setDisplay(Math.round(latest)),
     });
     return () => controls.stop();
-  }, [start, target]);
+  }, [start, target, reduceMotion]);
 
   return (
     <span className="text-3xl font-bold tabular-nums text-white sm:text-4xl">
