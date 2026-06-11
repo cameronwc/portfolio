@@ -31,7 +31,7 @@ function Diagram({ vertical }: { vertical: boolean }) {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
-      aria-label="Architecture: CircleCI cron triggers ticket detection, codebase analysis, Claude API fix generation, a fix pull request, and human review"
+      aria-label="Architecture diagram: linear pipeline — CircleCI Cron, then Ticket Detection, then Codebase Analysis, then Claude API fix generation, then Fix Pull Request, then Human Review"
       role="img"
     >
       {/* Edges */}
