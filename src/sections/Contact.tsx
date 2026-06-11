@@ -32,7 +32,7 @@ export function Contact() {
         >
           <a
             href="mailto:cameron.w.cooper@gmail.com"
-            className="rounded-lg bg-accent-500 px-8 py-3.5 text-sm font-semibold text-white transition hover:bg-accent-400"
+            className="rounded-lg bg-accent-500 px-8 py-3.5 text-sm font-semibold text-gray-950 transition hover:bg-accent-400"
           >
             cameron.w.cooper@gmail.com
           </a>

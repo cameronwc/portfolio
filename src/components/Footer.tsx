@@ -2,7 +2,7 @@ export function Footer() {
   return (
     <footer className="border-t border-white/[0.06] py-8">
       <div className="section-container flex flex-col items-center justify-between gap-4 sm:flex-row">
-        <span className="font-mono text-xs text-slate-500">
+        <span className="font-mono text-xs text-slate-400">
           CC<span className="text-accent-500/50">.</span>{" "}
           {new Date().getFullYear()}
         </span>

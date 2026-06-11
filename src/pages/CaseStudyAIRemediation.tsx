@@ -231,7 +231,7 @@ export function CaseStudyAIRemediation() {
           </Link>
           <Link
             to="/#contact"
-            className="rounded-lg bg-accent-500 px-8 py-3.5 text-sm font-semibold text-white transition hover:bg-accent-400 hover:shadow-[0_0_28px_rgba(6,182,212,0.45)]"
+            className="rounded-lg bg-accent-500 px-8 py-3.5 text-sm font-semibold text-gray-950 transition hover:bg-accent-400 hover:shadow-[0_0_28px_rgba(6,182,212,0.45)]"
           >
             Get In Touch
           </Link>

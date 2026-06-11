@@ -1,4 +1,4 @@
-import { lazy, Suspense, useRef } from "react";
+import { lazy, Suspense, useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Magnetic } from "../components/Magnetic";
@@ -12,15 +12,31 @@ const ParticleField = lazy(() =>
 
 export function Hero() {
   const headlineRef = useRef<HTMLHeadingElement>(null);
+  // Defer the WebGL canvas until the main thread is idle so Three.js init
+  // never competes with first paint and hydration
+  const [showParticles, setShowParticles] = useState(false);
+
+  useEffect(() => {
+    if ("requestIdleCallback" in window) {
+      const id = window.requestIdleCallback(() => setShowParticles(true), {
+        timeout: 1500,
+      });
+      return () => window.cancelIdleCallback(id);
+    }
+    const timer = window.setTimeout(() => setShowParticles(true), 350);
+    return () => window.clearTimeout(timer);
+  }, []);
 
   return (
     <section className="relative flex min-h-screen items-center justify-center overflow-hidden">
       {/* Background effects */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute left-1/2 top-0 h-[600px] w-[800px] -translate-x-1/2 -translate-y-1/4 rounded-full bg-accent-500/[0.07] blur-[120px]" />
-        <Suspense fallback={null}>
-          <ParticleField />
-        </Suspense>
+        {showParticles && (
+          <Suspense fallback={null}>
+            <ParticleField />
+          </Suspense>
+        )}
         <div className="scanlines absolute inset-0" />
         <div className="absolute bottom-0 h-32 w-full bg-gradient-to-t from-gray-950 to-transparent" />
       </div>
@@ -72,7 +88,7 @@ export function Hero() {
           <Magnetic>
             <a
               href="#experience"
-              className="rounded-lg bg-accent-500 px-8 py-3.5 text-sm font-semibold text-white transition hover:bg-accent-400 hover:shadow-[0_0_28px_rgba(6,182,212,0.45)]"
+              className="rounded-lg bg-accent-500 px-8 py-3.5 text-sm font-semibold text-gray-950 transition hover:bg-accent-400 hover:shadow-[0_0_28px_rgba(6,182,212,0.45)]"
             >
               Explore My Work
             </a>
@@ -126,7 +142,7 @@ export function Hero() {
             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
             className="flex flex-col items-center gap-2"
           >
-            <span className="text-xs tracking-[0.2em] text-slate-500">
+            <span className="text-xs tracking-[0.2em] text-slate-400">
               SCROLL
             </span>
             <svg
@@ -134,7 +150,7 @@ export function Hero() {
               height="24"
               viewBox="0 0 16 24"
               fill="none"
-              className="text-slate-500"
+              className="text-slate-400"
             >
               <path
                 d="M8 4v12m0 0l-4-4m4 4l4-4"

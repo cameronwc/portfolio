@@ -20,7 +20,7 @@ export function NotFound() {
           </h1>
           <Link
             to="/"
-            className="mt-10 inline-block rounded-lg bg-accent-500 px-8 py-3.5 text-sm font-semibold text-white transition hover:bg-accent-400 hover:shadow-[0_0_28px_rgba(6,182,212,0.45)]"
+            className="mt-10 inline-block rounded-lg bg-accent-500 px-8 py-3.5 text-sm font-semibold text-gray-950 transition hover:bg-accent-400 hover:shadow-[0_0_28px_rgba(6,182,212,0.45)]"
           >
             Back to home
           </Link>
