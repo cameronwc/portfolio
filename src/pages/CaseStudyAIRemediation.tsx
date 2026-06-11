@@ -106,9 +106,9 @@ export function CaseStudyAIRemediation() {
       <section className="border-t border-white/[0.06] py-16 sm:py-24">
         <div className="section-container">
           <motion.div {...fadeUp}>
-            <p className="font-mono text-sm tracking-[0.2em] text-accent-400">
+            <h2 className="font-mono text-sm tracking-[0.2em] text-accent-400">
               THE PROBLEM
-            </p>
+            </h2>
             <div className="mt-6 max-w-3xl space-y-4 leading-relaxed text-slate-400">
               <p>
                 Wellthy's security program holds critical and high-severity
@@ -151,9 +151,9 @@ export function CaseStudyAIRemediation() {
       <section className="border-t border-white/[0.06] py-16 sm:py-24">
         <div className="section-container">
           <motion.div {...fadeUp}>
-            <p className="font-mono text-sm tracking-[0.2em] text-accent-400">
+            <h2 className="font-mono text-sm tracking-[0.2em] text-accent-400">
               HOW IT WORKS
-            </p>
+            </h2>
           </motion.div>
           <ol className="mt-10 max-w-3xl space-y-8">
             {STEPS.map((step, index) => (
@@ -165,7 +165,7 @@ export function CaseStudyAIRemediation() {
                 viewport={{ once: true, amount: 0.4 }}
                 transition={{ duration: 0.5, delay: index * 0.08 }}
               >
-                <span className="mt-0.5 flex h-8 w-8 flex-none items-center justify-center rounded border border-accent-500/30 bg-accent-500/[0.06] font-mono text-sm text-accent-400">
+                <span aria-hidden="true" className="mt-0.5 flex h-8 w-8 flex-none items-center justify-center rounded border border-accent-500/30 bg-accent-500/[0.06] font-mono text-sm text-accent-400">
                   {String(index + 1).padStart(2, "0")}
                 </span>
                 <div>
@@ -186,9 +186,9 @@ export function CaseStudyAIRemediation() {
       <section className="border-t border-white/[0.06] py-16 sm:py-24">
         <div className="section-container">
           <motion.div {...fadeUp}>
-            <p className="font-mono text-sm tracking-[0.2em] text-accent-400">
+            <h2 className="font-mono text-sm tracking-[0.2em] text-accent-400">
               OUTCOMES
-            </p>
+            </h2>
             <div className="mt-6 max-w-3xl space-y-4 leading-relaxed text-slate-400">
               <p>
                 The system runs as part of the security program that maintained
