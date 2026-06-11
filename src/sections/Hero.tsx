@@ -1,5 +1,6 @@
 import { lazy, Suspense } from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 // Lazy-loaded so Three.js ships as its own chunk and never blocks first paint
 const ParticleField = lazy(() =>
@@ -79,6 +80,23 @@ export function Hero() {
           >
             Get In Touch
           </a>
+        </motion.div>
+
+        <motion.div
+          className="mt-8"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.7 }}
+        >
+          <Link
+            to="/work/ai-remediation"
+            className="group inline-flex items-center gap-2 font-mono text-xs tracking-wider text-slate-500 transition-colors hover:text-accent-400"
+          >
+            FEATURED: AI-POWERED VULNERABILITY REMEDIATION
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true" className="transition-transform group-hover:translate-x-0.5">
+              <path d="M6 3l5 5-5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </Link>
         </motion.div>
 
         {/* Scroll indicator */}
