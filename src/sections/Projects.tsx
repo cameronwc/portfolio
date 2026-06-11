@@ -59,10 +59,11 @@ export function Projects() {
           {projects.map((project, index) => (
             <motion.article
               key={project.name}
-              className="group flex flex-col rounded-xl border border-white/[0.06] bg-white/[0.02] p-6 transition-colors hover:border-white/[0.12]"
+              className="glass group flex flex-col rounded-xl p-6 transition-shadow duration-300 hover:border-white/20 hover:shadow-glow-sm"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
+              whileHover={{ y: -4 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
               <div className="flex items-start justify-between gap-4">

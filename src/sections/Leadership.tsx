@@ -63,10 +63,11 @@ export function Leadership() {
           {initiatives.map((initiative, index) => (
             <motion.article
               key={initiative.title}
-              className="rounded-xl border border-white/[0.06] bg-white/[0.02] p-6 transition-colors hover:border-white/[0.12]"
+              className="glass rounded-xl p-6 transition-shadow duration-300 hover:border-white/20 hover:shadow-glow-sm"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
+              whileHover={{ y: -4 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
               <span className="font-mono text-xs tracking-wider text-accent-400/80">

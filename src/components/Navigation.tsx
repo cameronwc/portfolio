@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useScroll } from "framer-motion";
 
 const navLinks = [
   { label: "About", href: "#about" },
@@ -14,6 +14,7 @@ const navLinks = [
 export function Navigation() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { scrollYProgress } = useScroll();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
@@ -25,13 +26,18 @@ export function Navigation() {
     <motion.nav
       className={`fixed top-0 z-50 w-full transition-all duration-300 ${
         scrolled
-          ? "border-b border-white/[0.06] bg-gray-950/80 backdrop-blur-xl"
+          ? "border-b border-white/[0.06] bg-gray-950/80 backdrop-blur-md"
           : "bg-transparent"
       }`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
     >
+      <motion.div
+        className="absolute left-0 top-0 h-0.5 w-full origin-left bg-accent-500 shadow-glow-sm"
+        style={{ scaleX: scrollYProgress }}
+        aria-hidden="true"
+      />
       <div className="section-container flex h-16 items-center justify-between">
         <a
           href="#"
