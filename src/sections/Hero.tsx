@@ -1,4 +1,4 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useRef } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Magnetic } from "../components/Magnetic";
@@ -11,6 +11,8 @@ const ParticleField = lazy(() =>
 );
 
 export function Hero() {
+  const headlineRef = useRef<HTMLHeadingElement>(null);
+
   return (
     <section className="relative flex min-h-screen items-center justify-center overflow-hidden">
       {/* Background effects */}
@@ -34,10 +36,16 @@ export function Hero() {
         </motion.p>
 
         <motion.h1
+          ref={headlineRef}
           className="shimmer-text mt-8 text-5xl font-extrabold tracking-tight sm:text-7xl lg:text-8xl"
           initial={{ opacity: 0, y: 30, filter: "blur(8px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ duration: 0.8, delay: 0.15, ease: "easeOut" }}
+          onAnimationComplete={() => {
+            // A lingering blur(0px) keeps the clipped-gradient headline on a
+            // compositor layer and degrades text antialiasing — clear it.
+            if (headlineRef.current) headlineRef.current.style.filter = "";
+          }}
         >
           Cameron
           <br />
