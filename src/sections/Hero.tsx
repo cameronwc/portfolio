@@ -1,6 +1,12 @@
-import { lazy, Suspense, useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
+import { lazy, Suspense, useEffect, useState } from "react";
+import {
+  motion,
+  useMotionTemplate,
+  useMotionValue,
+  useReducedMotion,
+} from "framer-motion";
 import { Link } from "react-router-dom";
+import type { PointerEvent as ReactPointerEvent } from "react";
 import { Magnetic } from "../components/Magnetic";
 
 // Lazy-loaded so Three.js ships as its own chunk and never blocks first paint
@@ -10,11 +16,30 @@ const ParticleField = lazy(() =>
   }))
 );
 
+const NAME_LINES = ["Cameron", "Cooper"];
+
+const letterContainer = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.05, delayChildren: 0.2 } },
+};
+
+const letterItem = {
+  hidden: { y: "110%", opacity: 0 },
+  visible: {
+    y: "0%",
+    opacity: 1,
+    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
 export function Hero() {
-  const headlineRef = useRef<HTMLHeadingElement>(null);
+  const reduceMotion = useReducedMotion();
   // Defer the WebGL canvas until the main thread is idle so Three.js init
   // never competes with first paint and hydration
   const [showParticles, setShowParticles] = useState(false);
+  const spotX = useMotionValue(-2000);
+  const spotY = useMotionValue(-2000);
+  const spotlight = useMotionTemplate`radial-gradient(640px circle at ${spotX}px ${spotY}px, rgba(6, 182, 212, 0.08), transparent 70%)`;
 
   useEffect(() => {
     if ("requestIdleCallback" in window) {
@@ -27,8 +52,18 @@ export function Hero() {
     return () => window.clearTimeout(timer);
   }, []);
 
+  const onPointerMove = (event: ReactPointerEvent<HTMLElement>) => {
+    if (reduceMotion || event.pointerType !== "mouse") return;
+    const rect = event.currentTarget.getBoundingClientRect();
+    spotX.set(event.clientX - rect.left);
+    spotY.set(event.clientY - rect.top);
+  };
+
   return (
-    <section className="relative flex min-h-screen items-center justify-center overflow-hidden">
+    <section
+      className="relative flex min-h-screen items-center justify-center overflow-hidden"
+      onPointerMove={onPointerMove}
+    >
       {/* Background effects */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute left-1/2 top-0 h-[600px] w-[800px] -translate-x-1/2 -translate-y-1/4 rounded-full bg-accent-500/[0.07] blur-[120px]" />
@@ -38,6 +73,12 @@ export function Hero() {
           </Suspense>
         )}
         <div className="scanlines absolute inset-0" />
+        {/* Cursor spotlight */}
+        <motion.div
+          className="absolute inset-0 hidden md:block"
+          style={{ background: spotlight }}
+          aria-hidden="true"
+        />
         <div className="absolute bottom-0 h-32 w-full bg-gradient-to-t from-gray-950 to-transparent" />
       </div>
 
@@ -52,20 +93,29 @@ export function Hero() {
         </motion.p>
 
         <motion.h1
-          ref={headlineRef}
-          className="shimmer-text mt-8 text-5xl font-extrabold tracking-tight sm:text-7xl lg:text-8xl"
-          initial={{ opacity: 0, y: 30, filter: "blur(8px)" }}
-          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          transition={{ duration: 0.8, delay: 0.15, ease: "easeOut" }}
-          onAnimationComplete={() => {
-            // A lingering blur(0px) keeps the clipped-gradient headline on a
-            // compositor layer and degrades text antialiasing — clear it.
-            if (headlineRef.current) headlineRef.current.style.filter = "";
-          }}
+          className="mt-8 text-5xl font-extrabold tracking-tight sm:text-7xl lg:text-8xl"
+          aria-label="Cameron Cooper"
+          variants={letterContainer}
+          initial="hidden"
+          animate="visible"
         >
-          Cameron
-          <br />
-          Cooper
+          {NAME_LINES.map((line) => (
+            <span
+              key={line}
+              aria-hidden="true"
+              className="-mb-[0.12em] block overflow-hidden pb-[0.12em]"
+            >
+              {line.split("").map((letter, index) => (
+                <motion.span
+                  key={`${letter}-${index}`}
+                  variants={letterItem}
+                  className="inline-block bg-gradient-to-b from-white to-slate-400 bg-clip-text text-transparent"
+                >
+                  {letter}
+                </motion.span>
+              ))}
+            </span>
+          ))}
         </motion.h1>
 
         <motion.p

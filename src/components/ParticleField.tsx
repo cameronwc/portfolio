@@ -3,12 +3,16 @@ import * as THREE from "three";
 
 const DESKTOP_COUNT = 800;
 const MOBILE_COUNT = 300;
-const MAX_EDGES = 24;
-const EDGE_SPAWNS_PER_SECOND = 8;
+const MAX_EDGES = 40;
+const EDGE_SPAWNS_PER_SECOND = 14;
 const EDGE_DISTANCE = 4.5;
 const EDGE_LIFETIME = 2.4;
+const EDGE_MAX_ALPHA = 0.22;
 const PAIR_SAMPLES_PER_FRAME = 600;
 const BOUNDS = { x: 44, y: 26, z: 18 };
+// Cursor interaction: particles within this radius get pushed aside
+const REPEL_RADIUS = 6;
+const REPEL_FORCE = 2.4;
 
 const ACCENT = new THREE.Color(0x06b6d4);
 
@@ -63,10 +67,10 @@ export function ParticleField() {
 
     const pointsMaterial = new THREE.PointsMaterial({
       color: ACCENT,
-      size: 0.09,
+      size: 0.12,
       sizeAttenuation: true,
       transparent: true,
-      opacity: 0.15,
+      opacity: 0.3,
       blending: THREE.AdditiveBlending,
       depthWrite: false,
     });
@@ -96,10 +100,11 @@ export function ParticleField() {
     const lines = new THREE.LineSegments(lineGeometry, lineMaterial);
     scene.add(lines);
 
-    const mouse = { x: 0, y: 0 };
+    const mouse = { x: 0, y: 0, active: false };
     const onPointerMove = (event: PointerEvent) => {
       mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
       mouse.y = (event.clientY / window.innerHeight) * 2 - 1;
+      mouse.active = true;
     };
     if (!isMobile && !prefersReducedMotion) {
       window.addEventListener("pointermove", onPointerMove, { passive: true });
@@ -114,9 +119,32 @@ export function ParticleField() {
       return dx * dx + dy * dy + dz * dz;
     };
 
+    let elapsed = 0;
+
     const update = (dt: number) => {
+      elapsed += dt;
       for (let i = 0; i < count * 3; i++) {
         positions[i] += velocities[i] * dt * 60;
+      }
+
+      // Particles part around the cursor (projected onto the z=0 plane)
+      if (!isMobile && mouse.active) {
+        const halfH = Math.tan((camera.fov * Math.PI) / 360) * camera.position.z;
+        const halfW = halfH * camera.aspect;
+        const pointerX = mouse.x * halfW;
+        const pointerY = -mouse.y * halfH;
+        const radiusSq = REPEL_RADIUS * REPEL_RADIUS;
+        for (let i = 0; i < count; i++) {
+          const dx = positions[i * 3] - pointerX;
+          const dy = positions[i * 3 + 1] - pointerY;
+          const dSq = dx * dx + dy * dy;
+          if (dSq < radiusSq && dSq > 0.0001) {
+            const d = Math.sqrt(dSq);
+            const push = ((REPEL_RADIUS - d) / REPEL_RADIUS) * REPEL_FORCE * dt;
+            positions[i * 3] += (dx / d) * push;
+            positions[i * 3 + 1] += (dy / d) * push;
+          }
+        }
       }
       // Bounce drifting particles back inside the volume
       for (let i = 0; i < count; i++) {
@@ -169,7 +197,7 @@ export function ParticleField() {
 
       for (let i = 0; i < edges.length; i++) {
         const edge = edges[i];
-        const fade = Math.sin(Math.PI * (edge.age / EDGE_LIFETIME)) * 0.15;
+        const fade = Math.sin(Math.PI * (edge.age / EDGE_LIFETIME)) * EDGE_MAX_ALPHA;
         for (let end = 0; end < 2; end++) {
           const particle = end === 0 ? edge.a : edge.b;
           const v = (i * 2 + end) * 3;
@@ -185,9 +213,17 @@ export function ParticleField() {
       linePositionAttribute.needsUpdate = true;
       lineColorAttribute.needsUpdate = true;
 
+      // Slow autonomous sway keeps the scene alive before the cursor moves;
+      // pointer parallax layers on top of it
+      const swayX = Math.sin(elapsed * 0.22) * 0.7;
+      const swayY = Math.cos(elapsed * 0.17) * 0.4;
       if (!isMobile) {
-        camera.position.x += (mouse.x * 2 - camera.position.x) * 0.04;
-        camera.position.y += (-mouse.y * 1.2 - camera.position.y) * 0.04;
+        camera.position.x += (mouse.x * 2 + swayX - camera.position.x) * 0.04;
+        camera.position.y += (-mouse.y * 1.2 + swayY - camera.position.y) * 0.04;
+        camera.lookAt(0, 0, 0);
+      } else {
+        camera.position.x += (swayX - camera.position.x) * 0.02;
+        camera.position.y += (swayY - camera.position.y) * 0.02;
         camera.lookAt(0, 0, 0);
       }
     };
