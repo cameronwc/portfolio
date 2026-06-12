@@ -92,8 +92,14 @@ export function Hero() {
           SENIOR DEVSECOPS ENGINEER II AT WELLTHY
         </motion.p>
 
+        <motion.div
+          className="absolute left-1/2 top-[34%] h-72 w-[40rem] max-w-[90vw] -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent-500/[0.14] blur-[100px]"
+          animate={{ opacity: [0.55, 1, 0.55], scale: [1, 1.15, 1] }}
+          transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
+          aria-hidden="true"
+        />
         <motion.h1
-          className="mt-8 text-5xl font-extrabold tracking-tight sm:text-7xl lg:text-8xl"
+          className="relative mt-8 text-6xl font-extrabold tracking-tight sm:text-8xl lg:text-9xl"
           aria-label="Cameron Cooper"
           variants={letterContainer}
           initial="hidden"

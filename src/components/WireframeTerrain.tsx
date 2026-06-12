@@ -6,6 +6,9 @@ const MOBILE_SEGMENTS = { x: 64, y: 44 };
 const PLANE_SIZE = { x: 95, y: 70 };
 const SCROLL_SPEED = 0.9;
 const POINTER_BUMP = 2.4;
+// Radar ping: a bright ring sweeps outward across the grid on a fixed period
+const PULSE_PERIOD = 5;
+const PULSE_SPEED = 17;
 
 const VERTEX_SHADER = /* glsl */ `
   uniform float uTime;
@@ -13,6 +16,7 @@ const VERTEX_SHADER = /* glsl */ `
   uniform float uPointerStrength;
   varying float vElevation;
   varying float vDepth;
+  varying vec2 vPlanePos;
 
   float hash(vec2 p) {
     return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453123);
@@ -44,16 +48,17 @@ const VERTEX_SHADER = /* glsl */ `
     vec3 pos = position;
     vec2 p = vec2(pos.x, pos.z - uTime);
 
-    float elevation = fbm(p * 0.055) * 4.5;
+    float elevation = fbm(p * 0.05) * 6.5;
     // Keep a calm valley corridor through the center so the headline sits
-    // over quiet ground while ridges rise at the edges
-    elevation *= 0.35 + 0.65 * smoothstep(5.0, 28.0, abs(pos.x));
+    // over quiet ground while ridges tower at the edges
+    elevation *= 0.3 + 0.7 * smoothstep(4.0, 26.0, abs(pos.x));
 
     float pointerDist = distance(pos.xz, uPointer);
     elevation += exp(-pointerDist * pointerDist * 0.035) * uPointerStrength;
 
     pos.y += elevation;
     vElevation = elevation;
+    vPlanePos = position.xz;
 
     vec4 mvPosition = modelViewMatrix * vec4(pos, 1.0);
     vDepth = -mvPosition.z;
@@ -61,17 +66,42 @@ const VERTEX_SHADER = /* glsl */ `
   }
 `;
 
-const FRAGMENT_SHADER = /* glsl */ `
-  uniform vec3 uColor;
+const WIRE_FRAGMENT_SHADER = /* glsl */ `
+  uniform vec3 uColorLow;
+  uniform vec3 uColorHigh;
+  uniform float uPulse;
   varying float vElevation;
+  varying float vDepth;
+  varying vec2 vPlanePos;
+
+  void main() {
+    float depthFade = smoothstep(82.0, 14.0, vDepth);
+    // Dim the near field so foreground lines never compete with the copy
+    float nearDim = smoothstep(13.0, 34.0, vDepth) * 0.6 + 0.4;
+
+    // Elevation ramp: deep teal valleys, bright cyan ridges, white-hot peaks
+    float height = clamp(vElevation * 0.14 + 0.35, 0.0, 1.0);
+    vec3 color = mix(uColorLow, uColorHigh, height);
+    color = mix(color, vec3(1.0), smoothstep(0.82, 1.0, height) * 0.55);
+
+    // Radar ping sweeping outward from ahead of the camera — kept inside the
+    // near-field dim so it never washes out the copy
+    float ringDist = abs(length(vPlanePos - vec2(0.0, -6.0)) - uPulse);
+    float ring = exp(-ringDist * ringDist * 0.05);
+    color = mix(color, vec3(0.85, 1.0, 1.0), ring * 0.65);
+
+    float alpha = depthFade * nearDim * (0.3 + height * 0.38 + ring * 0.55);
+    gl_FragColor = vec4(color, alpha * 0.85);
+  }
+`;
+
+// Opaque dark fill rendered beneath the wireframe so ridges occlude the
+// lines behind them — turns a see-through net into solid landscape
+const SOLID_FRAGMENT_SHADER = /* glsl */ `
   varying float vDepth;
 
   void main() {
-    float depthFade = smoothstep(75.0, 14.0, vDepth);
-    // Dim the near field so foreground lines never compete with the copy
-    float nearDim = smoothstep(14.0, 34.0, vDepth) * 0.45 + 0.55;
-    float altitude = clamp(0.26 + vElevation * 0.08, 0.12, 0.5);
-    gl_FragColor = vec4(uColor, depthFade * altitude * nearDim * 0.62);
+    gl_FragColor = vec4(0.012, 0.035, 0.085, 1.0);
   }
 `;
 
@@ -115,21 +145,37 @@ export function WireframeTerrain() {
       uTime: { value: 0 },
       uPointer: { value: new THREE.Vector2(9999, 9999) },
       uPointerStrength: { value: 0 },
-      uColor: { value: new THREE.Color(0x06b6d4) },
+      uPulse: { value: -20 },
+      uColorLow: { value: new THREE.Color(0x0e7490) },
+      uColorHigh: { value: new THREE.Color(0x22d3ee) },
     };
 
-    const material = new THREE.ShaderMaterial({
+    // Same displacement in both passes — the solid mesh writes depth so the
+    // wireframe on top gets hidden-line occlusion from the ridges
+    const solidMaterial = new THREE.ShaderMaterial({
       vertexShader: VERTEX_SHADER,
-      fragmentShader: FRAGMENT_SHADER,
+      fragmentShader: SOLID_FRAGMENT_SHADER,
+      uniforms,
+      polygonOffset: true,
+      polygonOffsetFactor: 1,
+      polygonOffsetUnits: 1,
+    });
+    const solidTerrain = new THREE.Mesh(geometry, solidMaterial);
+    solidTerrain.renderOrder = 0;
+    scene.add(solidTerrain);
+
+    const wireMaterial = new THREE.ShaderMaterial({
+      vertexShader: VERTEX_SHADER,
+      fragmentShader: WIRE_FRAGMENT_SHADER,
       uniforms,
       wireframe: true,
       transparent: true,
       blending: THREE.AdditiveBlending,
       depthWrite: false,
     });
-
-    const terrain = new THREE.Mesh(geometry, material);
-    scene.add(terrain);
+    const wireTerrain = new THREE.Mesh(geometry, wireMaterial);
+    wireTerrain.renderOrder = 1;
+    scene.add(wireTerrain);
 
     // Project the cursor onto the terrain plane so the bump tracks it in world space
     const raycaster = new THREE.Raycaster();
@@ -158,6 +204,7 @@ export function WireframeTerrain() {
     const update = (dt: number) => {
       elapsed += dt;
       uniforms.uTime.value = elapsed * SCROLL_SPEED;
+      uniforms.uPulse.value = (elapsed % PULSE_PERIOD) * PULSE_SPEED;
 
       if (mouse.active) {
         uniforms.uPointer.value.lerp(pointerTarget, 0.12);
@@ -231,7 +278,8 @@ export function WireframeTerrain() {
       window.removeEventListener("resize", onResize);
       window.removeEventListener("pointermove", onPointerMove);
       geometry.dispose();
-      material.dispose();
+      solidMaterial.dispose();
+      wireMaterial.dispose();
       renderer.dispose();
       container.removeChild(renderer.domElement);
     };
