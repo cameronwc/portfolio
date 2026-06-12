@@ -1,15 +1,15 @@
 import { motion } from "framer-motion";
 
 const photos = [
-  { src: "photography/DSC05565-Pano.jpg", alt: "Panoramic landscape" },
-  { src: "photography/DSC03713.jpg", alt: "Landscape photography" },
-  { src: "photography/DSC05119.jpg", alt: "Nature photography" },
-  { src: "photography/DJI_0406.jpg", alt: "Aerial drone photography" },
-  { src: "photography/DSC05353.jpg", alt: "Travel photography" },
-  { src: "photography/DSC08871.jpg", alt: "Couples portrait" },
-  { src: "photography/DSC05371.jpg", alt: "Adventure photography" },
-  { src: "photography/DSC03037.jpg", alt: "Coastal photography" },
-  { src: "photography/DSC05523.jpg", alt: "Scenic photography" },
+  { src: "photography/DSC05565-Pano.jpg", alt: "Panoramic landscape", width: 1500, height: 500 },
+  { src: "photography/DSC03713.jpg", alt: "Landscape photography", width: 2048, height: 1366 },
+  { src: "photography/DSC05119.jpg", alt: "Nature photography", width: 1366, height: 2048 },
+  { src: "photography/DJI_0406.jpg", alt: "Aerial drone photography", width: 1500, height: 1500 },
+  { src: "photography/DSC05353.jpg", alt: "Travel photography", width: 2048, height: 1366 },
+  { src: "photography/DSC08871.jpg", alt: "Couples portrait", width: 1500, height: 1500 },
+  { src: "photography/DSC05371.jpg", alt: "Adventure photography", width: 2048, height: 1366 },
+  { src: "photography/DSC03037.jpg", alt: "Coastal photography", width: 1500, height: 1000 },
+  { src: "photography/DSC05523.jpg", alt: "Scenic photography", width: 1366, height: 2048 },
 ];
 
 export function Photography() {
@@ -57,7 +57,10 @@ export function Photography() {
               <img
                 src={`${import.meta.env.BASE_URL}${photo.src}`}
                 alt={photo.alt}
+                width={photo.width}
+                height={photo.height}
                 loading="lazy"
+                decoding="async"
                 className="w-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
               <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-gray-950/60 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />

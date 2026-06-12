@@ -137,7 +137,7 @@ export function Experience() {
 
         {/* Featured: Wellthy */}
         <motion.article
-          className="relative rounded-xl border border-accent-500/20 border-l-2 border-l-accent-500/30 bg-accent-500/[0.03] p-8 transition-all duration-300 hover:border-l-accent-400 hover:shadow-[-12px_0_32px_-12px_rgba(6,182,212,0.5)] sm:p-10"
+          className="gradient-border relative rounded-xl border border-accent-500/20 border-l-2 border-l-accent-500/30 bg-accent-500/[0.03] p-8 transition-all duration-300 hover:border-l-accent-400 hover:shadow-[-12px_0_32px_-12px_rgba(6,182,212,0.5)] sm:p-10"
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.1 }}
@@ -160,11 +160,11 @@ export function Experience() {
               <p className="mt-1 text-sm font-medium text-slate-300">
                 {wellthy.title}
               </p>
-              <p className="mt-0.5 text-xs text-slate-500">
+              <p className="mt-0.5 text-xs text-slate-400">
                 {wellthy.location}
               </p>
             </div>
-            <span className="font-mono text-sm text-slate-500">
+            <span className="font-mono text-sm text-slate-400">
               {wellthy.period}
             </span>
           </div>
@@ -238,11 +238,11 @@ export function Experience() {
                     {role.company}
                   </h3>
                   <p className="mt-0.5 text-sm text-slate-400">{role.title}</p>
-                  <p className="mt-0.5 text-xs text-slate-500">
+                  <p className="mt-0.5 text-xs text-slate-400">
                     {role.location}
                   </p>
                 </div>
-                <span className="font-mono text-sm text-slate-500">
+                <span className="font-mono text-sm text-slate-400">
                   {role.period}
                 </span>
               </div>

@@ -1,4 +1,4 @@
-import { animate, motion, useInView } from "framer-motion";
+import { animate, motion, useInView, useReducedMotion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
 const metrics = [
@@ -37,16 +37,22 @@ function parseValue(value: string): { target: number; suffix: string } {
 function CountUpValue({ value, start }: { value: string; start: boolean }) {
   const { target, suffix } = parseValue(value);
   const [display, setDisplay] = useState(0);
+  const reduceMotion = useReducedMotion();
 
   useEffect(() => {
     if (!start) return;
+    // The standalone animate() runs outside MotionConfig's reach
+    if (reduceMotion) {
+      setDisplay(target);
+      return;
+    }
     const controls = animate(0, target, {
       duration: 1.5,
       ease: "easeOut",
       onUpdate: (latest) => setDisplay(Math.round(latest)),
     });
     return () => controls.stop();
-  }, [start, target]);
+  }, [start, target, reduceMotion]);
 
   return (
     <span className="text-3xl font-bold tabular-nums text-white sm:text-4xl">
@@ -78,7 +84,7 @@ function MetricCard({
       <span className="mt-2 rounded border border-accent-500/20 bg-accent-500/[0.06] px-2 py-0.5 font-mono text-xs font-medium uppercase tracking-[0.2em] text-accent-400">
         {metric.label}
       </span>
-      <span className="mt-2 text-xs text-slate-500">{metric.description}</span>
+      <span className="mt-2 text-xs text-slate-400">{metric.description}</span>
       {index < metrics.length - 1 && (
         <span
           className="absolute -right-6 top-1/2 hidden h-14 w-px -translate-y-1/2 bg-gradient-to-b from-transparent via-accent-500/40 to-transparent shadow-glow-sm md:block"

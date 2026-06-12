@@ -1,35 +1,41 @@
+import { lazy, Suspense } from "react";
+import { Routes, Route, useLocation } from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
 import { Navigation } from "./components/Navigation";
-import { Hero } from "./sections/Hero";
-import { Metrics } from "./sections/Metrics";
-import { Clients } from "./sections/Clients";
-import { About } from "./sections/About";
-import { Experience } from "./sections/Experience";
-import { Leadership } from "./sections/Leadership";
-import { Expertise } from "./sections/Expertise";
-import { Certifications } from "./sections/Certifications";
-import { Projects } from "./sections/Projects";
-import { Book } from "./sections/Book";
-import { Photography } from "./sections/Photography";
-import { Contact } from "./sections/Contact";
 import { Footer } from "./components/Footer";
+import { ScrollManager } from "./components/ScrollManager";
+import { Home } from "./pages/Home";
+import { NotFound } from "./pages/NotFound";
+
+const CaseStudyAIRemediation = lazy(() =>
+  import("./pages/CaseStudyAIRemediation").then((m) => ({
+    default: m.CaseStudyAIRemediation,
+  }))
+);
 
 function App() {
+  const location = useLocation();
+
   return (
     <div className="relative overflow-x-hidden">
+      <a href="#main" className="skip-link">Skip to content</a>
+      <ScrollManager />
       <Navigation />
-      <main>
-        <Hero />
-        <Metrics />
-        <Clients />
-        <About />
-        <Experience />
-        <Leadership />
-        <Expertise />
-        <Certifications />
-        <Projects />
-        <Book />
-        <Photography />
-        <Contact />
+      <main id="main" tabIndex={-1} className="outline-none">
+        <AnimatePresence mode="wait">
+          <Routes location={location} key={location.pathname}>
+            <Route path="/" element={<Home />} />
+            <Route
+              path="/work/ai-remediation"
+              element={
+                <Suspense fallback={null}>
+                  <CaseStudyAIRemediation />
+                </Suspense>
+              }
+            />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </AnimatePresence>
       </main>
       <Footer />
     </div>

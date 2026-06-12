@@ -2,7 +2,7 @@ export function Footer() {
   return (
     <footer className="border-t border-white/[0.06] py-8">
       <div className="section-container flex flex-col items-center justify-between gap-4 sm:flex-row">
-        <span className="font-mono text-xs text-slate-600">
+        <span className="font-mono text-xs text-slate-400">
           CC<span className="text-accent-500/50">.</span>{" "}
           {new Date().getFullYear()}
         </span>
@@ -11,7 +11,7 @@ export function Footer() {
             href="https://github.com/cameronwc"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-xs text-slate-600 transition-colors hover:text-slate-400"
+            className="text-xs text-slate-400 transition-colors hover:text-slate-200"
           >
             GitHub
           </a>
@@ -19,7 +19,7 @@ export function Footer() {
             href="https://www.linkedin.com/in/cameronwc"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-xs text-slate-600 transition-colors hover:text-slate-400"
+            className="text-xs text-slate-400 transition-colors hover:text-slate-200"
           >
             LinkedIn
           </a>
@@ -27,7 +27,7 @@ export function Footer() {
             href="https://cameroncooperphotography.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-xs text-slate-600 transition-colors hover:text-slate-400"
+            className="text-xs text-slate-400 transition-colors hover:text-slate-200"
           >
             Photography
           </a>

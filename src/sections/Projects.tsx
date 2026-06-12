@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const projects = [
   {
@@ -72,7 +73,39 @@ export function Projects() {
           </h2>
         </motion.div>
 
-        <div className="mt-12 grid gap-6 sm:grid-cols-2">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.5 }}
+        >
+          <Link
+            to="/work/ai-remediation"
+            aria-label="AI-Powered Vulnerability Remediation case study"
+            className="gradient-border group mt-12 flex flex-col gap-6 rounded-xl border border-accent-500/20 bg-accent-500/[0.03] p-8 transition-shadow duration-300 hover:shadow-glow sm:flex-row sm:items-center sm:justify-between sm:p-10"
+          >
+            <div>
+              <span className="font-mono text-xs tracking-wider text-accent-400">
+                FEATURED CASE STUDY
+              </span>
+              <h3 className="mt-3 text-xl font-bold text-white sm:text-2xl">
+                AI-Powered Vulnerability Remediation
+              </h3>
+              <p className="mt-3 max-w-xl text-sm leading-relaxed text-slate-400">
+                How an automated Claude API pipeline turns vulnerability tickets into
+                reviewed fix pull requests at Wellthy.
+              </p>
+            </div>
+            <span className="inline-flex flex-none items-center gap-2 font-mono text-sm text-accent-400 transition-transform duration-300 group-hover:translate-x-1">
+              Read the case study
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M6 3l5 5-5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </span>
+          </Link>
+        </motion.div>
+
+        <div className="mt-6 grid gap-6 sm:grid-cols-2">
           {projects.map((project, index) => (
             <motion.article
               key={project.name}
@@ -106,7 +139,7 @@ export function Projects() {
               <p className="mt-3 flex-1 text-sm leading-relaxed text-slate-400">
                 {project.description}
               </p>
-              <p className="mt-4 border-t border-white/[0.06] pt-4 text-sm text-slate-500">
+              <p className="mt-4 border-t border-white/[0.06] pt-4 text-sm text-slate-400">
                 {project.impact}
               </p>
             </motion.article>

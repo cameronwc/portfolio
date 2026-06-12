@@ -241,7 +241,7 @@ export function Expertise() {
                 {category.subcategories.map((sub) => (
                   <div key={sub.label || "default"} className="py-3 first:pt-0 last:pb-0">
                     {sub.label && (
-                      <p className="mb-1.5 font-mono text-[10px] uppercase tracking-widest text-slate-500">
+                      <p className="mb-1.5 font-mono text-[10px] uppercase tracking-widest text-slate-400">
                         {sub.label}
                       </p>
                     )}
