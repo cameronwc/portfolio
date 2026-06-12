@@ -10,9 +10,9 @@ import type { PointerEvent as ReactPointerEvent } from "react";
 import { Magnetic } from "../components/Magnetic";
 
 // Lazy-loaded so Three.js ships as its own chunk and never blocks first paint
-const ParticleField = lazy(() =>
-  import("../components/ParticleField").then((module) => ({
-    default: module.ParticleField,
+const WireframeTerrain = lazy(() =>
+  import("../components/WireframeTerrain").then((module) => ({
+    default: module.WireframeTerrain,
   }))
 );
 
@@ -69,7 +69,7 @@ export function Hero() {
         <div className="absolute left-1/2 top-0 h-[600px] w-[800px] -translate-x-1/2 -translate-y-1/4 rounded-full bg-accent-500/[0.07] blur-[120px]" />
         {showParticles && (
           <Suspense fallback={null}>
-            <ParticleField />
+            <WireframeTerrain />
           </Suspense>
         )}
         <div className="scanlines absolute inset-0" />
