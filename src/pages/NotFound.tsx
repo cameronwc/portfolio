@@ -8,6 +8,7 @@ export function NotFound() {
       <Head>
         <title>404 — Cameron Cooper</title>
         <meta name="description" content="Page not found." />
+        <meta name="robots" content="noindex, follow" />
       </Head>
       <section className="flex min-h-screen items-center justify-center">
         <div className="section-container py-32 text-center">
