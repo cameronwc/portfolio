@@ -55,11 +55,53 @@ export function CaseStudyAIRemediation() {
           content="Case study: an automated vulnerability remediation system using the Claude API and CircleCI, built at Wellthy."
         />
         <meta property="og:url" content="https://cameroncooper.co/work/ai-remediation" />
+        <link rel="canonical" href="https://cameroncooper.co/work/ai-remediation" />
         <meta name="twitter:title" content="AI-Powered Vulnerability Remediation — Cameron Cooper" />
         <meta
           name="twitter:description"
           content="Case study: an automated vulnerability remediation system using the Claude API and CircleCI, built at Wellthy."
         />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "TechArticle",
+            "headline": "AI-Powered Vulnerability Remediation",
+            "description":
+              "Case study: an automated vulnerability remediation system using the Claude API and CircleCI, built at Wellthy.",
+            "image": "https://cameroncooper.co/og-image.png",
+            "mainEntityOfPage": "https://cameroncooper.co/work/ai-remediation",
+            "author": {
+              "@type": "Person",
+              "name": "Cameron Cooper",
+              "url": "https://cameroncooper.co/",
+            },
+            "publisher": {
+              "@type": "Person",
+              "name": "Cameron Cooper",
+              "url": "https://cameroncooper.co/",
+            },
+          })}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://cameroncooper.co/",
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "AI-Powered Vulnerability Remediation",
+                "item": "https://cameroncooper.co/work/ai-remediation",
+              },
+            ],
+          })}
+        </script>
       </Head>
       {/* Hero */}
       <section className="relative overflow-hidden pt-32 pb-16 sm:pt-40 sm:pb-20">

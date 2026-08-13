@@ -1,0 +1,26 @@
+# Cameron Cooper
+
+> Senior DevSecOps Engineer II at Wellthy. Cloud security automation, compliance engineering, and team enablement for a healthcare caregiver platform.
+
+Cameron Cooper is a DevSecOps engineer based in Huntington Beach, CA, with 7+ years securing SaaS platforms across healthcare, enterprise, and defense. He leads cloud security and compliance engineering at Wellthy, previously worked at CVS Health / Aetna Health and Parsons, and is the author of "Breaking into DevSecOps."
+
+## Key facts
+
+- Current role: Senior DevSecOps Engineer II (Lead) at Wellthy, January 2022 — Present
+- Maintains a 0-day Mean Time to Remediation (MTTR) for critical and high-severity vulnerabilities across 7+ engineering teams
+- Architected an AI-powered vulnerability remediation system using the Claude API and CircleCI
+- Led multiple SOC 2 Type II audits and HIPAA/NIST/GDPR compliance programs
+- Author of "Breaking into DevSecOps: A Practical Guide for Launching Your Career in Secure Software Delivery"
+
+## Pages
+
+- [Home](https://cameroncooper.co/): Bio, work experience, technical expertise, certifications, and contact information
+- [AI-Powered Vulnerability Remediation](https://cameroncooper.co/work/ai-remediation): Case study on an automated remediation pipeline built with the Claude API and CircleCI
+
+## Links
+
+- [GitHub](https://github.com/cameronwc)
+- [LinkedIn](https://www.linkedin.com/in/cameronwc)
+- [Photography portfolio](https://cameroncooperphotography.com)
+- [Book on Amazon](https://www.amazon.com/Breaking-into-DevSecOps-Practical-Launching-ebook/dp/B0GSHSK4H5)
+- Contact: cameron.w.cooper@gmail.com

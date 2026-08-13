@@ -22,6 +22,7 @@ export function Home() {
           name="description"
           content="Cameron Cooper — Senior DevSecOps Engineer II at Wellthy. Cloud security automation, compliance engineering, and team enablement."
         />
+        <link rel="canonical" href="https://cameroncooper.co/" />
         <meta property="og:title" content="Cameron Cooper — Senior DevSecOps Engineer" />
         <meta
           property="og:description"
@@ -33,6 +34,47 @@ export function Home() {
           name="twitter:description"
           content="Senior DevSecOps Engineer II at Wellthy. Cloud security automation, compliance engineering, and team enablement."
         />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ProfilePage",
+            "mainEntity": {
+              "@type": "Person",
+              "name": "Cameron Cooper",
+              "url": "https://cameroncooper.co/",
+              "image": "https://cameroncooper.co/og-image.png",
+              "jobTitle": "Senior DevSecOps Engineer II",
+              "description":
+                "Senior DevSecOps Engineer II at Wellthy. Cloud security automation, compliance engineering, and team enablement.",
+              "email": "mailto:cameron.w.cooper@gmail.com",
+              "worksFor": {
+                "@type": "Organization",
+                "name": "Wellthy",
+              },
+              "alumniOf": [
+                { "@type": "Organization", "name": "CVS Health / Aetna Health" },
+                { "@type": "Organization", "name": "Parsons" },
+              ],
+              "knowsAbout": [
+                "DevSecOps",
+                "Cloud Security",
+                "Compliance Engineering",
+                "SOC 2",
+                "HIPAA",
+                "AWS Security",
+                "Threat Modeling",
+                "Vulnerability Management",
+                "CI/CD Security",
+              ],
+              "sameAs": [
+                "https://github.com/cameronwc",
+                "https://www.linkedin.com/in/cameronwc",
+                "https://cameroncooperphotography.com",
+                "https://www.amazon.com/Breaking-into-DevSecOps-Practical-Launching-ebook/dp/B0GSHSK4H5",
+              ],
+            },
+          })}
+        </script>
       </Head>
       <Hero />
       <Metrics />
