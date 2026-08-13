@@ -1,15 +1,14 @@
 import { Link } from "react-router-dom";
+import { Head } from "vite-react-ssg";
 import { PageTransition } from "../components/PageTransition";
-import { usePageMeta } from "../hooks/usePageMeta";
 
 export function NotFound() {
-  usePageMeta(
-    "404 — Cameron Cooper",
-    "Page not found."
-  );
-
   return (
     <PageTransition>
+      <Head>
+        <title>404 — Cameron Cooper</title>
+        <meta name="description" content="Page not found." />
+      </Head>
       <section className="flex min-h-screen items-center justify-center">
         <div className="section-container py-32 text-center">
           <p className="font-mono text-sm tracking-[0.3em] text-accent-400">

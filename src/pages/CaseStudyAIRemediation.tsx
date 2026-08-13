@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { Head } from "vite-react-ssg";
 import { PageTransition } from "../components/PageTransition";
 import { ArchitectureDiagram } from "../components/ArchitectureDiagram";
-import { usePageMeta } from "../hooks/usePageMeta";
 
 const META_CHIPS = [
   { label: "Role", value: "Architect & Lead" },
@@ -41,13 +41,26 @@ const fadeUp = {
 } as const;
 
 export function CaseStudyAIRemediation() {
-  usePageMeta(
-    "AI-Powered Vulnerability Remediation — Cameron Cooper",
-    "Case study: an automated vulnerability remediation system using the Claude API and CircleCI, built at Wellthy."
-  );
-
   return (
     <PageTransition>
+      <Head>
+        <title>AI-Powered Vulnerability Remediation — Cameron Cooper</title>
+        <meta
+          name="description"
+          content="Case study: an automated vulnerability remediation system using the Claude API and CircleCI, built at Wellthy."
+        />
+        <meta property="og:title" content="AI-Powered Vulnerability Remediation — Cameron Cooper" />
+        <meta
+          property="og:description"
+          content="Case study: an automated vulnerability remediation system using the Claude API and CircleCI, built at Wellthy."
+        />
+        <meta property="og:url" content="https://cameroncooper.co/work/ai-remediation" />
+        <meta name="twitter:title" content="AI-Powered Vulnerability Remediation — Cameron Cooper" />
+        <meta
+          name="twitter:description"
+          content="Case study: an automated vulnerability remediation system using the Claude API and CircleCI, built at Wellthy."
+        />
+      </Head>
       {/* Hero */}
       <section className="relative overflow-hidden pt-32 pb-16 sm:pt-40 sm:pb-20">
         <div className="pointer-events-none absolute inset-0">

@@ -1,16 +1,8 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import { BrowserRouter } from "react-router-dom";
-import { MotionConfig } from "framer-motion";
-import App from "./App";
+import { ViteReactSSG } from "vite-react-ssg";
+import { routes } from "./App";
 import "./index.css";
 
-ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <MotionConfig reducedMotion="user">
-        <App />
-      </MotionConfig>
-    </BrowserRouter>
-  </React.StrictMode>
-);
+export const createRoot = ViteReactSSG({
+  routes,
+  basename: import.meta.env.BASE_URL,
+});
