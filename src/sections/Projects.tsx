@@ -52,6 +52,28 @@ const projects = [
     impact:
       "Contributed upstream to improve the tool's usability in enterprise DevSecOps pipelines.",
   },
+  {
+    name: "Sluice",
+    role: "Creator & Developer",
+    description:
+      "Open-source AI governance control plane. One control plane with three ingress adapters: browser extension, LiteLLM proxy, and SDK. Cedar policy engine for policy enforcement, PII/PHI scanning via Presidio and LLM Guard, ClickHouse audit logging, and a Next.js dashboard. Open-core model targeting regulated industries.",
+    impact: "Apache-2.0, actively maintained, CI-tested.",
+    link: "https://cameronwc.github.io/sluice-ai-website/",
+  },
+  {
+    name: "Preplate",
+    role: "Creator & Developer",
+    description:
+      "iOS nutrition and meal-planning app. Macro and calorie tracking with training and rest day targets, Apple Health integration, a weekly meal planner, recipe detail views with a serving scaler and step timers, auto-generated shopping lists grouped by aisle, water and body-weight tracking, and AI coaching. Planning, tracking, cooking, and shopping in one app, not a photo-calorie logger.",
+    impact: "Swift/SwiftUI, submitted to App Store review August 2026.",
+  },
+  {
+    name: "suzfit",
+    role: "Creator & Developer",
+    description:
+      "iOS fitness tracking app for logging workouts, sets, and progress over time. Built solo end to end, from data model through App Store submission.",
+    impact: "Swift/SwiftUI, submitted to App Store review August 2026.",
+  },
 ];
 
 export function Projects() {
